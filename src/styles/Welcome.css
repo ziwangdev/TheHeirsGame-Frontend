@@ -1,0 +1,30 @@
+html,body{
+    height: 100%;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    background-repeat: no-repeat;
+    background-image: url("../images/welcome-bg.png");
+    background-size: 100vw;
+    background-position-x: 0px;
+    z-index: -1;
+}
+
+h1{
+    color: white;
+}
+
+div{
+    justify-content: center;
+
+}
+
+.welcome-title{
+    padding-top: 220px;
+}
+
+form{
+    color: white;
+}

@@ -1,0 +1,25 @@
+.sidenav-container{
+    position: fixed;
+    top: 100px;
+    Right: 10px;
+    z-index: 11000;
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+}
+
+.sidenav-player-list{
+    background: white;
+    border-radius: 5px;
+    border: solid lightgray 1px;
+}
+
+.sidenav-player-container{
+    padding: 10px;
+}
+
+.sidenav-container.button{
+    padding:0px;
+
+}
+

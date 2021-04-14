@@ -1,0 +1,169 @@
+
+.grid-container{
+    background: white;
+    padding: 100px 200px 300px 650px;
+}
+
+.grid-row{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+}
+
+.grid-cell{
+    min-width: 80px;
+    height: 80px;
+    border: solid white 1px;
+    border-radius: 5px;
+    color: rgba(0,0,255,0);
+}
+
+.grid-cell:hover{
+
+}
+
+.cell-land-small{
+    border: solid gray 1px;
+    background: lightgray;
+}
+
+.cell-land-large-tl{
+    border-top: solid gray 1px;
+    border-left: solid gray 1px;
+    border-right: solid lightgray 1px;
+    border-bottom: solid lightgray 1px;
+    background: lightgray;
+    border-radius: 5px 0px 0px 0px;
+}
+
+.cell-land-large-tr{
+    border-top: solid gray 1px;
+    border-right: solid gray 1px;
+    border-left: solid lightgray 1px;
+    border-bottom: solid lightgray 1px;
+    background: lightgray;
+    border-radius: 0px 5px 0px 0px;
+}
+
+.cell-land-large-bl{
+    border-bottom: solid gray 1px;
+    border-left: solid gray 1px;
+    border-top: solid lightgray 1px;
+    border-right: solid lightgray 1px;
+    background: lightgray;
+    border-radius: 0px 0px 0px 5px;
+}
+
+.cell-land-large-br{
+    border-bottom: solid gray 1px;
+    border-right: solid gray 1px;
+    border-top: solid lightgray 1px;
+    border-left: solid lightgray 1px;
+    background: lightgray;
+    border-radius: 0px 0px 5px 0px;
+}
+
+.cell-path{
+    border: solid gray 1px;
+    background: lightgray;
+}
+
+.cell-path-tl{
+    border: solid gray 1px;
+    background: url(../images/walk-tl.png) no-repeat;
+    background-size: contain;
+}
+
+.cell-path-tr{
+    border: solid gray 1px;
+    background: url(../images/walk-tr.png) no-repeat;
+    background-size: contain;
+}
+
+.cell-path-bl{
+    border: solid gray 1px;
+    background: url(../images/walk-bl.png) no-repeat;
+    background-size: contain;
+}
+
+.cell-path-br{
+    border: solid gray 1px;
+    background: url(../images/walk-br.png) no-repeat;
+    background-size: contain;
+}
+
+.cell-path-horizontal{
+    border: solid gray 1px;
+    background: url(../images/walk-horizontal.png) no-repeat;
+    background-size: contain;
+}
+
+.cell-path-vertical{
+    border: solid gray 1px;
+    background: url(../images/walk-vertical.png) no-repeat;
+    background-size: contain;
+}
+
+
+
+.cell-shop{
+    border: solid gray 1px;
+    background: url(../images/shop.png) no-repeat;
+    background-size: contain;
+}
+
+.cell-money-20000{
+    border: solid gray 1px;
+    background: url(../images/20000.png) no-repeat;
+    background-size: contain;
+}
+
+
+.cell-money-50000{
+    border: solid gray 1px;
+    background: url(../images/50000.png) no-repeat;
+    background-size: contain;
+}
+
+.cell-money-100000{
+    border: solid gray 1px;
+    background: url(../images/100000.png) no-repeat;
+    background-size: contain;
+}
+
+.cell-money-50000-loss{
+    border: solid gray 1px;
+    background: url(../images/50000-loss.png) no-repeat;
+    background-size: contain;
+}
+
+.cell-money-20000-loss{
+    border: solid gray 1px;
+    background: url(../images/20000-loss.png) no-repeat;
+    background-size: contain;
+}
+
+.cell-random{
+    border: solid gray 1px;
+    background: url(../images/random.png) no-repeat;
+    background-size: contain;
+}
+
+.cell-plus1{
+    border: solid gray 1px;
+    background: url(../images/plus1.png) no-repeat;
+    background-size: contain;
+}
+
+.cell-plus2{
+    border: solid gray 1px;
+    background: url(../images/plus2.png) no-repeat;
+    background-size: contain;
+}
+
+.cell-house-1-hyori{
+    border: solid darkgoldenrod 1px;
+    background: url(../images/house-1-hyori.png) no-repeat;
+    background-size: contain;
+}

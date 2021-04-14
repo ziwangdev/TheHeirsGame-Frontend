@@ -1,0 +1,20 @@
+.nav-container{
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    padding: 0px;
+    z-index: 11000;
+    background: white;
+    border-radius: 5px;
+    /*border: solid lightgray 1px;*/
+    display: flex;
+    flex-direction: row;
+}
+
+.nav-container button{
+
+}
+
+.topnav-dropdown{
+    margin-right: 10px;
+}

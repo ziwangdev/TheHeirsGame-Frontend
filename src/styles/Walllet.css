@@ -1,0 +1,14 @@
+.wallet-container{
+    position: fixed;
+    top: 10px;
+    left: 150px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    z-index: 11000;
+    background: white;
+    border-radius: 13px;
+    border: solid lightgray 1px;
+    color: #454545;
+    line-height: 100%;
+}

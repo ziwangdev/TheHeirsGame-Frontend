@@ -1,0 +1,54 @@
+.inventory-container{
+    position: fixed;
+    bottom: 0px;
+    background: #f5f5f5;
+    border: solid lightgray 1px;
+    opacity: 100%;
+    width: 100vw;
+    height: 15vh;
+    z-index: 10000;
+}
+
+.player-avatar{
+    position: fixed;
+    bottom: 10px;
+    left: 2vw;
+    z-index:10001;
+    height: 22vh;
+    border-radius: 10px;
+    border: solid lightgray 2px;
+
+}
+
+.card-container{
+    position: fixed;
+    bottom: 10px;
+    left: 12vw;
+    width: 80vw;
+}
+
+.card{
+    position: fixed;
+    width: 7.5vw;
+    height: 18vh;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.dice{
+    position: fixed;
+    bottom: 10px;
+    right: 20px;
+    width: 10vw;
+    height: 16vh;
+    background: white;
+    border: solid lightgray 1px;
+    border-radius: 5px;
+}
+
+/*Elements by ID*/
+#card-1{
+    background-image: url("../images/遥控骰子.png");
+    background-size: contain;
+
+}

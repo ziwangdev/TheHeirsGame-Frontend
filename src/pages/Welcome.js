@@ -1,9 +1,10 @@
 import React, {Component, useState, useContext} from 'react'
+import { useHistory} from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
-import { startGameApi } from '../api/BackendApiCalls';
+import { startGameApi } from '../api/BackendApiCalls'
 import {Link} from 'react-router-dom'
 // import FirebaseContext from "../contexts/FirebaseContext";
 import '../styles/Welcome.css'
@@ -14,7 +15,7 @@ export default function Welcome() {
     const [name, setName] = useState('');
     const [room, setRoom] = useState('');
     const [message, setMessage] = useState('');
-
+    const history = useHistory();
 
 
     function validateForm(){
@@ -33,7 +34,9 @@ export default function Welcome() {
 
     function startGameSuccess(message){
         setMessage(message);
-        // Navigate to
+        // Navigate to /game
+        history.push('/game');
+
     }
 
     function startGameFailure(message){
@@ -41,7 +44,8 @@ export default function Welcome() {
     }
 
     return (
-        <div className={'form-container'}>
+        <div className={'welcome-container'}>
+            <div className={'form-container'}>
                 <Form onSubmit={validateForm}>
                     <Form.Group controlId="playerIdentity">
                         <Form.Label>进入游戏的身份</Form.Label>
@@ -62,13 +66,15 @@ export default function Welcome() {
                 </Form>
                 <Row>
                     {/*<Link to={'/game'}>*/}
-                        <Button variant={'dark'} onClick={validateForm} >开始游戏</Button>
+                    <Button variant={'dark'} onClick={validateForm} >开始游戏</Button>
                     {/*</Link>*/}
                 </Row>
                 <Row>
                     <p id={'authErrorMessage'}>Error: {message}</p>
                 </Row>
+            </div>
         </div>
+
 
     );
 

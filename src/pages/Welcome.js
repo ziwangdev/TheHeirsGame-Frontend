@@ -12,7 +12,7 @@ export default function Welcome() {
 
     const [identity, setIdentity] = useState('玩家');
     const [name, setName] = useState('');
-    const [room, setRoom] = useState('0000');
+    const [room, setRoom] = useState('');
     const [message, setMessage] = useState('');
 
 
@@ -33,6 +33,7 @@ export default function Welcome() {
 
     function startGameSuccess(message){
         setMessage(message);
+        // Navigate to
     }
 
     function startGameFailure(message){
@@ -40,8 +41,7 @@ export default function Welcome() {
     }
 
     return (
-        <div className={'welcome-title'}>
-            <Col>
+        <div className={'form-container'}>
                 <Form onSubmit={validateForm}>
                     <Form.Group controlId="playerIdentity">
                         <Form.Label>进入游戏的身份</Form.Label>
@@ -66,9 +66,8 @@ export default function Welcome() {
                     {/*</Link>*/}
                 </Row>
                 <Row>
-                    <p>{message}</p>
+                    <p id={'authErrorMessage'}>Error: {message}</p>
                 </Row>
-            </Col>
         </div>
 
     );

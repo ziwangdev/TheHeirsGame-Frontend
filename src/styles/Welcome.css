@@ -21,10 +21,23 @@ div{
 
 }
 
-.welcome-title{
-    padding-top: 220px;
+.form-container{
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+
 }
 
 form{
     color: white;
+}
+
+#authErrorMessage{
+    color: white;
+    padding-top: 5px;
 }

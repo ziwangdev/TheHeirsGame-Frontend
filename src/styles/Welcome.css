@@ -24,7 +24,7 @@ div{
 
 .form-container{
     position: fixed;
-    padding: 20px;
+    padding: 20px 20px 5px 20px;
     background: rgba(0, 0, 0, 0.4);
     border-radius: 15px;
     display: flex;

@@ -1,17 +1,15 @@
 .calendar-container{
-    position: fixed;
-    top: 10px;
-    left: 10px;
     z-index: 11000;
     background: white;
     border-radius: 13px;
     border: solid lightgray 1px;
+    display: flex;
+    align-items: start;
 }
 
 .calendar-info{
-    position: fixed;
-    top: 28px;
-    left: 46px;
+    margin-top: 8%;
+    position: absolute;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -19,10 +17,19 @@
     z-index: 12000;
 }
 
+.calendar-info p{
+    font-size: 1.5vh;
+}
+
+.calendar-info h4{
+    padding-top: 20%;
+    font-size: 3vh;
+}
+
 .calendar-day{
     color: white;
 }
 
 .calendar-background{
-    height: 15vh;
+    width: 8vw;
 }

@@ -1,6 +1,6 @@
 .sidenav-container{
     position: fixed;
-    top: 100px;
+    top: 8vh;
     Right: 10px;
     z-index: 11000;
     display: flex;
@@ -8,18 +8,49 @@
     align-items: start;
 }
 
+.sidenav-player-profile{
+    display: flex;
+}
+
+
+.sidenav-container h4{
+    font-size: larger;
+}
+
+.sidenav-container h5{
+    font-size: large;
+}
+
+.sidenav-container h6{
+    font-size: medium;
+}
+
 .sidenav-player-list{
     background: white;
     border-radius: 5px;
     border: solid lightgray 1px;
+    padding: 10px;
+
 }
 
 .sidenav-player-container{
-    padding: 10px;
+    padding: 10px 10px 0px 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .sidenav-container.button{
     padding:0px;
+
+}
+
+.sidenav-player-avatar{
+    height: 7vh;
+    border-radius: 10px;
+    border: solid lightgray 1px;
+    margin-bottom: 10px;
 
 }
 

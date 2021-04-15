@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export function startGameApi(
+export function joinRoomApi(
     identity,
     name,
     roomID,
@@ -27,6 +27,31 @@ export function startGameApi(
         })
         .catch((res) => {
             console.log(res);
-            return 'Error!';
+            failureCallback('Error in POST request sent by joinRoomApi.')
+        })
+}
+
+export function createRoomApi(
+    name,
+    roomID,
+    successCallback,
+    failureCallback
+){
+    axios({
+        method: 'post',
+        url: 'https://radiant-island-48373.herokuapp.com/auth/post/create-game',
+        data:{
+            roomID: roomID
+        }
+    })
+        .then((res) =>{
+            if (res.status == 200) {
+                console.log('Room created successful!');
+                successCallback('Room created successfully!');
+            }
+        })
+        .catch((res) => {
+            console.log(res);
+            failureCallback('Error in POST request sent by createGameApi.')
         })
 }

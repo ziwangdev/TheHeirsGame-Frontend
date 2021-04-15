@@ -26,7 +26,8 @@ function TopNav(){
                     <Dropdown.Item href="#action/3.1">房产类型</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
-            <Button variant={'outline-secondary'}>退出</Button>
+            <Button variant={'outline-secondary'} className={'topnav-button'}>房间号</Button>
+            <Button variant={'outline-secondary'} className={'topnav-button'}>退出</Button>
 
             {/*游戏机制 Modal*/}
             <Modal show={show} onHide={handleClose}>

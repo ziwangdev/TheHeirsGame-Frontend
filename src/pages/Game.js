@@ -14,10 +14,8 @@ function Game(){
         <div>
             <Container fluid={true} className={'game-container'}>
 
-                <div>
+                <div className={'calendar-and-wallet'}>
                     <Calendar/>
-                </div>
-                <div>
                     <Wallet/>
                 </div>
                 <div>

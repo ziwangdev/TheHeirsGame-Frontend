@@ -1,7 +1,12 @@
-.game-containter{
+.calendar-and-wallet{
+    margin-top: 1vh;
+    position: fixed;
+    display: flex;
+    align-items: start;
 }
 
 .container-fluid{
     padding: 0px;
 }
+
 

@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
-import { startGameApi } from '../api/BackendApiCalls'
+import { joinRoomApi } from '../api/BackendApiCalls'
 import {Link} from 'react-router-dom'
 // import FirebaseContext from "../contexts/FirebaseContext";
 import '../styles/Welcome.css'
@@ -24,10 +24,13 @@ export default function Welcome() {
             console.log("Submit failed. Player has no name.")
         }
         // If entering as host, create room
+        if(identity == '主持'){
+
+        }
 
         // If entering as player, check if room exists
         if(identity == '玩家'){
-            startGameApi(identity, name, room, startGameSuccess, startGameFailure);
+            joinRoomApi(identity, name, room, startGameSuccess, startGameFailure);
         }
         // If entering as guest..
     }
@@ -70,7 +73,7 @@ export default function Welcome() {
                     {/*</Link>*/}
                 </Row>
                 <Row>
-                    <p id={'authErrorMessage'}>Error: {message}</p>
+                    <p id={'authErrorMessage'}>{message}</p>
                 </Row>
             </div>
         </div>

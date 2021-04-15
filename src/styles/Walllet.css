@@ -1,7 +1,5 @@
 .wallet-container{
-    position: fixed;
-    top: 10px;
-    left: 150px;
+    margin-left: 10px;
     padding-top: 10px;
     padding-left: 10px;
     padding-right: 10px;

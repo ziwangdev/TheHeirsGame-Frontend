@@ -6,8 +6,8 @@ class Wallet extends Component{
   render(){
       return(
           <div className={'wallet-container'}>
-              <p>现金 $200,000</p>
-              <p>总资产 $200,000</p>
+              <h6>现金 $200,000</h6>
+              <h6>总资产 $200,000</h6>
           </div>
       );
   }

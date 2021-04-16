@@ -1,5 +1,4 @@
-import React, {Component, useState} from 'react'
-import Navbar from 'react-bootstrap/Navbar'
+import React, {useState} from 'react'
 import Dropdown from 'react-bootstrap/Dropdown'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
@@ -7,7 +6,11 @@ import Modal from 'react-bootstrap/Modal'
 
 import '../../styles/TopNav.css'
 
-function TopNav(){
+function quitGame(){
+
+}
+
+export default function TopNav(){
 
     const [show, setShow] = useState(false);
 
@@ -27,7 +30,7 @@ function TopNav(){
                 </Dropdown.Menu>
             </Dropdown>
             <Button variant={'outline-secondary'} className={'topnav-button'}>房间号</Button>
-            <Button variant={'outline-secondary'} className={'topnav-button'}>退出</Button>
+            <Button variant={'outline-secondary'} className={'topnav-button'} onClick={quitGame}>退出</Button>
 
             {/*游戏机制 Modal*/}
             <Modal show={show} onHide={handleClose}>
@@ -55,5 +58,3 @@ function TopNav(){
 
     );
 }
-
-export default TopNav;

@@ -2,7 +2,7 @@
     z-index: 11000;
     background: white;
     border-radius: 13px;
-    border: solid lightgray 1px;
+    border: solid #6c757d 1px;
     display: flex;
     align-items: start;
 }

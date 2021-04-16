@@ -1,6 +1,5 @@
 
 
-
 h1{
     color: white;
 }
@@ -11,20 +10,20 @@ div{
 }
 
 .welcome-container{
-    width: 100vw;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url("../images/welcome-bg.png");
-    background-repeat: no-repeat;
-    background-position-x: 0px;
-    background-size: 100%;
+    /*background-image: url("../images/welcome-bg.png");*/
+    /*background-repeat: no-repeat;*/
+    /*background-position: center;*/
+    /*background-size: contain;*/
+    background-color: #292a3e;
 }
 
 .form-container{
     position: fixed;
-    padding: 20px 20px 5px 20px;
+    padding: 20px 20px 20px 20px;
     background: rgba(0, 0, 0, 0.4);
     border-radius: 15px;
     display: flex;
@@ -32,9 +31,15 @@ div{
 
 }
 
+.welcome-background{
+    height: 100vh;
+}
+
 form{
     color: white;
 }
+
+
 
 #authErrorMessage{
     color: white;

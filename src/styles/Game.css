@@ -9,4 +9,11 @@
     padding: 0px;
 }
 
+/* Applies to entire app */
+.clickable:hover{
+    opacity: 50%;
+}
 
+.clickable:active{
+    opacity: 100%;
+}

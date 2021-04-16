@@ -1,42 +1,58 @@
-import React, {Component, useState, useContext} from 'react'
+import React, {useState} from 'react'
 import { useHistory} from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
-import { joinRoomApi } from '../api/BackendApiCalls'
-import {Link} from 'react-router-dom'
-// import FirebaseContext from "../contexts/FirebaseContext";
+import Modal from 'react-bootstrap/Modal'
+import {createRoomApi, joinRoomApi} from '../api/BackendApiCalls'
+import background from '../images/welcome-bg.png'
 import '../styles/Welcome.css'
 
 export default function Welcome() {
 
+    // User input fields
     const [identity, setIdentity] = useState('玩家');
     const [name, setName] = useState('');
     const [room, setRoom] = useState('');
-    const [message, setMessage] = useState('');
     const history = useHistory();
+    // Modal
+    const [show, setShow] = useState(false);
+    const [message, setMessage] = useState('');
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
 
     function validateForm(){
         // Rejects empty name
-        if(name == ''){
-            console.log("Submit failed. Player has no name.")
+        if(name === ''){
+            setMessage('游戏昵称不能为空。');
+            setShow(true);
+            return;
+        }
+        // Rejects empty room ID
+        if(room === ''){
+            setMessage('游戏房间号不能为空。');
+            setShow(true);
+            return;
         }
         // If entering as host, create room
-        if(identity == '主持'){
-
+        if(identity === '主持'){
+            createRoomApi(name, room, createGameSuccess, createGameFailure);
         }
 
         // If entering as player, check if room exists
-        if(identity == '玩家'){
+        if(identity ==='玩家'){
             joinRoomApi(identity, name, room, startGameSuccess, startGameFailure);
         }
-        // If entering as guest..
+        // If entering as guest
+        if(identity ==='观众'){
+            joinRoomApi(identity, name, room, startGameSuccess, startGameFailure);
+        }
     }
 
     function startGameSuccess(message){
-        setMessage(message);
+        setMessage('已找到游戏房间！即将进入游戏。');
+        setShow(true);
         // Navigate to /game
         history.push('/game');
 
@@ -44,10 +60,31 @@ export default function Welcome() {
 
     function startGameFailure(message){
         setMessage(message);
+        setShow(true);
+    }
+
+    function createGameSuccess(message){
+        setMessage(message);
+        // Navigate to /game
+        history.push('/game');
+    }
+
+    function createGameFailure(message){
+        setMessage(message);
+        setShow(true);
     }
 
     return (
         <div className={'welcome-container'}>
+            <Modal size={'sm'} centered show={show} className={'welcome-modal'}>
+                <Modal.Body>
+                    <p>{message}</p>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="dark" onClick={handleClose}>好的</Button>
+                </Modal.Footer>
+            </Modal>
+            <img src={background} alt={'Welcome'} className={'welcome-background'}/>
             <div className={'form-container'}>
                 <Form onSubmit={validateForm}>
                     <Form.Group controlId="playerIdentity">
@@ -71,9 +108,6 @@ export default function Welcome() {
                     {/*<Link to={'/game'}>*/}
                     <Button variant={'dark'} onClick={validateForm} >开始游戏</Button>
                     {/*</Link>*/}
-                </Row>
-                <Row>
-                    <p id={'authErrorMessage'}>{message}</p>
                 </Row>
             </div>
         </div>

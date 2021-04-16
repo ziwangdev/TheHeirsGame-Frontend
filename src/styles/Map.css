@@ -16,11 +16,15 @@
     height: 80px;
     border: solid white 1px;
     border-radius: 5px;
-    color: rgba(0,0,255,0);
+    color: rgba(0,0,255,1);
 }
 
 .grid-cell:hover{
+    opacity: 50%;
+}
 
+.grid-cell:active{
+    opacity: 100%;
 }
 
 .cell-land-small{

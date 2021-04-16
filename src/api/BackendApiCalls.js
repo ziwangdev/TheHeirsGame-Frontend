@@ -9,7 +9,7 @@ export function joinRoomApi(
 ) {
     axios({
         method: 'post',
-        url: 'https://radiant-island-48373.herokuapp.com/auth/post/start-game',
+        url: 'https://radiant-island-48373.herokuapp.com/auth/post/join-room',
         data:{
             identity: identity,
             name: name,
@@ -17,10 +17,10 @@ export function joinRoomApi(
         }
     })
         .then((res) => {
-            if (res.status == 200) {
+            if (res.status === 200) {
                 console.log('Authentication successful!');
                 successCallback('Authentication successful!');
-            } else if (res.status == 400) {
+            } else if (res.status === 400) {
                 console.log('Authentication failed!');
                 failureCallback('Authentication failed!');
             }
@@ -45,7 +45,7 @@ export function createRoomApi(
         }
     })
         .then((res) =>{
-            if (res.status == 200) {
+            if (res.status === 200) {
                 console.log('Room created successful!');
                 successCallback('Room created successfully!');
             }

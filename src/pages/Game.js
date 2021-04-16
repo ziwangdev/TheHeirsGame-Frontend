@@ -1,6 +1,5 @@
 import React from 'react'
 import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 import Container from "react-bootstrap/Container";
 import Map from './components/Map'
 import Inventory from './components/Inventory'

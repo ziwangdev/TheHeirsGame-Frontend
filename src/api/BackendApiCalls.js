@@ -9,10 +9,11 @@ export function joinRoomApi(
 ) {
     axios({
         method: 'post',
-        url: 'https://radiant-island-48373.herokuapp.com/auth/post/join-room',
+        // url: 'https://radiant-island-48373.herokuapp.com/auth/post/join-room',
+        url: 'http://localhost:3000/auth/post/join-room',
         data:{
             identity: identity,
-            name: name,
+            userName: name,
             roomID: roomID
         }
     })
@@ -22,26 +23,28 @@ export function joinRoomApi(
                 successCallback('Authentication successful!');
             } else if (res.status === 400) {
                 console.log('Authentication failed!');
-                failureCallback('Authentication failed!');
+                failureCallback(res.response.data);
             }
         })
         .catch((res) => {
-            console.log(res);
-            failureCallback('Error in POST request sent by joinRoomApi.')
+            console.log(JSON.stringify(res));
+            failureCallback(res.response.data);
         })
 }
 
 export function createRoomApi(
-    name,
+    hostName,
     roomID,
     successCallback,
     failureCallback
 ){
     axios({
         method: 'post',
-        url: 'https://radiant-island-48373.herokuapp.com/auth/post/create-game',
+        // url: 'https://radiant-island-48373.herokuapp.com/auth/post/create-game',
+        url: 'http://localhost:3000/auth/post/create-room',
         data:{
-            roomID: roomID
+            roomID: roomID,
+            hostName: hostName
         }
     })
         .then((res) =>{
@@ -52,6 +55,6 @@ export function createRoomApi(
         })
         .catch((res) => {
             console.log(res);
-            failureCallback('Error in POST request sent by createGameApi.')
+            failureCallback(res.response.data)
         })
 }

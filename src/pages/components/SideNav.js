@@ -26,8 +26,9 @@ function SideNav(){
                     <div>
                         <img src={jinwoo} alt={'Player 1'} className={'sidenav-player-avatar clickable'}/>
                     </div>
-                    <div>
+                    <div className={'sidenav-player-info'}>
                         {/*<h5>玩家1</h5>*/}
+                        <h5>名字</h5>
                         <div className={'sidenav-player-wealth'}>
                             <img src={cash} alt={'Cash'}/>
                             <h6>$200,000,000</h6>
@@ -43,8 +44,9 @@ function SideNav(){
                     <div>
                         <img src={hyori} alt={'Player 2'} className={'sidenav-player-avatar clickable'}/>
                     </div>
-                    <div>
+                    <div className={'sidenav-player-info'}>
                         {/*<h5>玩家2</h5>*/}
+                        <h5>名字</h5>
                         <div className={'sidenav-player-wealth'}>
                             <img src={cash} alt={'Cash'}/>
                             <h6>$200,000,000</h6>
@@ -60,8 +62,9 @@ function SideNav(){
                     <div>
                         <img src={yunho} alt={'Player 3'} className={'sidenav-player-avatar clickable'}/>
                     </div>
-                    <div>
+                    <div className={'sidenav-player-info'}>
                         {/*<h5>玩家3</h5>*/}
+                        <h5>名字</h5>
                         <div className={'sidenav-player-wealth'}>
                             <img src={cash} alt={'Cash'}/>
                             <h6>$200,000,000</h6>
@@ -76,8 +79,9 @@ function SideNav(){
                     <div>
                         <img src={hyojin} alt={'Player 4'} className={'sidenav-player-avatar clickable'}/>
                     </div>
-                    <div>
+                    <div className={'sidenav-player-info'}>
                         {/*<h5>玩家4</h5>*/}
+                        <h5>名字</h5>
                         <div className={'sidenav-player-wealth'}>
                             <img src={cash} alt={'Cash'}/>
                             <h6>$200,000,000</h6>

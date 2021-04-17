@@ -53,9 +53,8 @@
 .sidenav-player-container{
     padding: 10px 10px 10px 10px;
     display: flex;
-    justify-content: center;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .sidenav-container.button{
@@ -68,6 +67,9 @@
     height: 7vh;
     border-radius: 10px;
     border: solid lightgray 1px;
+}
 
+.sidenav-player-info{
+    margin-left: 10px;
 }
 

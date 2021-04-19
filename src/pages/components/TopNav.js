@@ -1,7 +1,8 @@
-import React, {useState} from 'react'
+import React, {useContext, useState} from 'react'
 import Dropdown from 'react-bootstrap/Dropdown'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
+import {GameContext} from "../../contexts/GameContext";
 
 
 import '../../styles/TopNav.css'
@@ -13,9 +14,15 @@ function quitGame(){
 export default function TopNav(){
 
     const [show, setShow] = useState(false);
-
+    const [showRoomNum, setShowRoomNum] = useState(false);
+    const {game, user} = useContext(GameContext);
+    const [gameValue, setGameValue] = game;
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    // const showRoomNum = () => {
+    //
+    // }
 
     return(
         <div className={'nav-container'} bg={'light'} expand={'lg'}>
@@ -32,8 +39,14 @@ export default function TopNav(){
             <Button variant={'outline-secondary'} className={'topnav-button'}>房间号</Button>
             <Button variant={'outline-secondary'} className={'topnav-button'} onClick={quitGame}>退出</Button>
 
+            {/*房间号 Modal*/}
+            <Modal show={showRoomNum}>
+                <Modal.Body>
+                    {/*<h6>房间号为{game.roomID}</h6>*/}
+                </Modal.Body>
+            </Modal>
             {/*游戏机制 Modal*/}
-            <Modal show={show} onHide={handleClose}>
+            <Modal centered show={show} onHide={handleClose} className={'help-modal'}>
                 <Modal.Header closeButton>
                     <Modal.Title>游戏机制</Modal.Title>
                 </Modal.Header>

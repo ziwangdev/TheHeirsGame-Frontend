@@ -4,15 +4,15 @@
     right: 10px;
     padding: 0px;
     z-index: 13000;
-    background: white;
     border-radius: 5px;
     /*border: solid lightgray 1px;*/
     display: flex;
     flex-direction: row;
+
 }
 
 .nav-container button{
-
+    background: white;
 }
 
 .topnav-button{

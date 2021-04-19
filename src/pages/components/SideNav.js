@@ -1,5 +1,6 @@
-import React, {useState} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import Button from 'react-bootstrap/Button'
+import {GameContext} from "../../contexts/GameContext";
 import jinwoo from '../../images/jinwoo.jpg'
 import hyori from '../../images/hyori.jpg'
 import hyojin from '../../images/hyojin.jpg'
@@ -8,10 +9,42 @@ import cash from '../../images/wealth-cash.png'
 import property from '../../images/wealth-property.png'
 import '../../styles/SideNav.css'
 
-function SideNav(){
+function SideNav(playersData){
 
     const [show, setShow] = useState(true);
     const [buttonText, setButtonText] = useState('>');
+    const {game, user} = useContext(GameContext);
+    const [gameValue, setGameValue] = game;
+
+    // Players
+    const [players, setPlayers] = useState({
+        player1: {
+            name: '未连接',
+            cash: 0,
+            property: 0
+        },
+        player2: {
+            name: '未连接',
+            cash: 0,
+            property: 0
+        },
+        player3: {
+            name: '未连接',
+            cash: 0,
+            property: 0
+        },
+        player4: {
+            name: '未连接',
+            cash: 0,
+            property: 0
+        }
+    });
+
+    useEffect(() => {
+        if(gameValue){
+            setPlayers(gameValue.players);
+        }
+    })
 
     const toggleSideNav = () => {
         setShow(!show);
@@ -27,15 +60,14 @@ function SideNav(){
                         <img src={jinwoo} alt={'Player 1'} className={'sidenav-player-avatar clickable'}/>
                     </div>
                     <div className={'sidenav-player-info'}>
-                        {/*<h5>玩家1</h5>*/}
-                        <h5>名字</h5>
+                        <h5>{players.player1.name}</h5>
                         <div className={'sidenav-player-wealth'}>
                             <img src={cash} alt={'Cash'}/>
-                            <h6>$200,000,000</h6>
+                            <h6>${players.player1.cash}</h6>
                         </div>
                         <div className={'sidenav-player-wealth'}>
                             <img src={property} alt={'Property'}/>
-                            <h6>$0</h6>
+                            <h6>${players.player1.property}</h6>
                         </div>
                     </div>
 
@@ -46,14 +78,14 @@ function SideNav(){
                     </div>
                     <div className={'sidenav-player-info'}>
                         {/*<h5>玩家2</h5>*/}
-                        <h5>名字</h5>
+                        <h5>{players.player2.name}</h5>
                         <div className={'sidenav-player-wealth'}>
                             <img src={cash} alt={'Cash'}/>
-                            <h6>$200,000,000</h6>
+                            <h6>${players.player2.cash}</h6>
                         </div>
                         <div className={'sidenav-player-wealth'}>
                             <img src={property} alt={'Property'}/>
-                            <h6>$0</h6>
+                            <h6>${players.player2.property}</h6>
                         </div>
                     </div>
 
@@ -64,14 +96,14 @@ function SideNav(){
                     </div>
                     <div className={'sidenav-player-info'}>
                         {/*<h5>玩家3</h5>*/}
-                        <h5>名字</h5>
+                        <h5>{players.player3.name}</h5>
                         <div className={'sidenav-player-wealth'}>
                             <img src={cash} alt={'Cash'}/>
-                            <h6>$200,000,000</h6>
+                            <h6>${players.player3.cash}</h6>
                         </div>
                         <div className={'sidenav-player-wealth'}>
                             <img src={property} alt={'Property'}/>
-                            <h6>$0</h6>
+                            <h6>${players.player3.property}</h6>
                         </div>
                     </div>
                 </div>
@@ -81,14 +113,14 @@ function SideNav(){
                     </div>
                     <div className={'sidenav-player-info'}>
                         {/*<h5>玩家4</h5>*/}
-                        <h5>名字</h5>
+                        <h5>{players.player4.name}</h5>
                         <div className={'sidenav-player-wealth'}>
                             <img src={cash} alt={'Cash'}/>
-                            <h6>$200,000,000</h6>
+                            <h6>${players.player4.cash}</h6>
                         </div>
                         <div className={'sidenav-player-wealth'}>
                             <img src={property} alt={'Property'}/>
-                            <h6>$0</h6>
+                            <h6>${players.player4.property}</h6>
                         </div>
                     </div>
                 </div>

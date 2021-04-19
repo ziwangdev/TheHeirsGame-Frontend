@@ -1,9 +1,14 @@
 import axios from 'axios';
+import React, { useContext } from 'react';
+import { GameContext } from '../contexts/GameContext';
+import Game from "../pages/Game";
 
+/* POST user joining data to server */
 export function joinRoomApi(
     identity,
     name,
     roomID,
+    character,
     successCallback,
     failureCallback
 ) {
@@ -13,6 +18,7 @@ export function joinRoomApi(
         url: 'http://localhost:3000/auth/post/join-room',
         data:{
             identity: identity,
+            character: character,
             userName: name,
             roomID: roomID
         }
@@ -27,11 +33,12 @@ export function joinRoomApi(
             }
         })
         .catch((res) => {
-            console.log(JSON.stringify(res));
-            failureCallback(res.response.data);
+            console.log(res);
+            failureCallback(res);
         })
 }
 
+/* POST new room data to server */
 export function createRoomApi(
     hostName,
     roomID,
@@ -58,3 +65,33 @@ export function createRoomApi(
             failureCallback(res.response.data)
         })
 }
+
+/* GET entire game data from server */
+export function loadGameApi(
+    roomID,
+    identity,
+    userName,
+    successCallback,
+    failureCallback
+){
+
+    axios({
+        method: 'get',
+        url: 'http://localhost:3000/game/get/load-game',
+        data:{
+            roomID: roomID,
+            identity: identity,
+            userName: userName
+        }
+    })
+        .then((res) => {
+            if(res.status === 200){
+                successCallback(res);
+            }
+        })
+        .catch((error) => {
+            console.log(error);
+            failureCallback(error);
+        })
+}
+

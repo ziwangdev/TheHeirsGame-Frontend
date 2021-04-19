@@ -403,26 +403,26 @@ class Map extends Component {
                     <div className={'grid-cell'}></div>
                 </div>
                 <div className={'grid-row'}>
-                    <div className={'grid-cell'}></div>
-                    <div className={'grid-cell'}></div>
-                    <div className={'grid-cell'}></div>
-                    <div className={'grid-cell'}></div>
-                    <div className={'grid-cell'}></div>
-                    <div className={'grid-cell'}></div>
-                    <div className={'grid-cell'}></div>
-                    <div className={'grid-cell'}></div>
-                    <div className={'grid-cell'}></div>
-                    <div className={'grid-cell'}></div>
-                    <div className={'grid-cell cell-shop'}></div>
-                    <div className={'grid-cell cell-random'}></div>
-                    <div className={'grid-cell cell-money-100000'}></div>
-                    <div className={'grid-cell cell-money-50000-loss'}></div>
-                    <div className={'grid-cell cell-money-50000'}></div>
-                    <div className={'grid-cell cell-plus2'}></div>
-                    <div className={'grid-cell cell-plus1'}></div>
-                    <div className={'grid-cell cell-money-20000'}></div>
-                    <div className={'grid-cell'}></div>
-                    <div className={'grid-cell'}></div>
+                    <div className={'grid-cell'}/>
+                    <div className={'grid-cell'}/>
+                    <div className={'grid-cell'}/>
+                    <div className={'grid-cell'}/>
+                    <div className={'grid-cell'}/>
+                    <div className={'grid-cell'}/>
+                    <div className={'grid-cell'}/>
+                    <div className={'grid-cell'}/>
+                    <div className={'grid-cell'}/>
+                    <div className={'grid-cell'}/>
+                    <div className={'grid-cell cell-shop'}/>
+                    <div className={'grid-cell cell-random'}/>
+                    <div className={'grid-cell cell-money-100000'}/>
+                    <div className={'grid-cell cell-money-50000-loss'}/>
+                    <div className={'grid-cell cell-money-50000'}/>
+                    <div className={'grid-cell cell-plus2'}/>
+                    <div className={'grid-cell cell-plus1'}/>
+                    <div className={'grid-cell cell-money-20000'}/>
+                    <div className={'grid-cell'}/>
+                    <div className={'grid-cell'}/>
                 </div>
 
             </div>

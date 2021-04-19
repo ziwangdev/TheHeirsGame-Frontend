@@ -57,9 +57,8 @@
     align-items: flex-start;
 }
 
-.sidenav-container.button{
-    padding:0px;
-
+.sidenav-container button{
+    background: white;
 }
 
 

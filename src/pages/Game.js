@@ -13,11 +13,16 @@ import { GameContext} from "../contexts/GameContext";
 function Game(){
     const {game, user} = useContext(GameContext);
     const [gameValue, setGameValue] = game;
+    const [userValue, setUserValue] = user;
 
     useEffect(() => {
         if(!gameValue){
             setGameValue(JSON.parse(sessionStorage.getItem('gameData')));
             console.log(JSON.parse(sessionStorage.getItem('gameData')));
+        }
+        if(!userValue){
+            setGameValue(JSON.parse(sessionStorage.getItem('userValue')));
+            console.log(JSON.parse(sessionStorage.getItem('userValue')));
         }
 
     })

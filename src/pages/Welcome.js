@@ -151,7 +151,11 @@ export default function Welcome() {
                     </Form.Group>
                     <Form.Group controlId={'roomID'}>
                         <Form.Label>游戏房间号</Form.Label>
-                        <Form.Control placeholder="" onChange={(e) => setRoom(e.target.value)}/>
+                        <Form.Control
+                            placeholder=""
+                            onChange={(e) => setRoom(e.target.value)}
+                            // Optional: handle enter key press
+                        />
                     </Form.Group>
                 </Form>
                 <Row>

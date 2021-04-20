@@ -1,4 +1,5 @@
 import React, {useContext, useState} from 'react'
+import { useHistory } from 'react-router-dom'
 import Dropdown from 'react-bootstrap/Dropdown'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
@@ -7,12 +8,9 @@ import {GameContext} from "../../contexts/GameContext";
 
 import '../../styles/TopNav.css'
 
-function quitGame(){
-
-}
 
 export default function TopNav(){
-
+    const history = useHistory();
     const [show, setShow] = useState(false);
     const [showRoomNum, setShowRoomNum] = useState(false);
     const {game, user} = useContext(GameContext);
@@ -20,9 +18,13 @@ export default function TopNav(){
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    // const showRoomNum = () => {
-    //
-    // }
+
+    const quitGame = () => {
+        // Delete all sessionStorage data
+        sessionStorage.clear();
+        // Direct to login page
+        history.push('/');
+    }
 
     return(
         <div className={'nav-container'} bg={'light'} expand={'lg'}>

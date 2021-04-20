@@ -76,8 +76,8 @@ export function loadGameApi(
 ){
 
     axios({
-        method: 'get',
-        url: 'http://localhost:3000/game/get/load-game',
+        method: 'post',
+        url: 'http://localhost:3000/game/post/load-game',
         data:{
             roomID: roomID,
             identity: identity,

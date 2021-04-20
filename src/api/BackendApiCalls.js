@@ -26,15 +26,16 @@ export function joinRoomApi(
         .then((res) => {
             if (res.status === 200) {
                 console.log('Authentication successful!');
-                successCallback('Authentication successful!');
+                successCallback(res.data);
             } else if (res.status === 400) {
                 console.log('Authentication failed!');
-                failureCallback(res.response.data);
+                failureCallback(res.data);
             }
         })
         .catch((res) => {
-            console.log(res);
-            failureCallback(res);
+            console.log('joinRoomApi POST request 400 with feedback:');
+            console.log(res.response.data);
+            failureCallback(res.response.data);
         })
 }
 
@@ -43,6 +44,7 @@ export function createRoomApi(
     hostName,
     roomID,
     successCallback,
+    choiceCallback,
     failureCallback
 ){
     axios({
@@ -56,12 +58,17 @@ export function createRoomApi(
     })
         .then((res) =>{
             if (res.status === 200) {
-                console.log('Room created successful!');
-                successCallback('Room created successfully!');
+                console.log(res);
+                if(res.data[0] === '该房间已存在，是否作为主持重连此房间？'){ // note that res.data is an array
+                    choiceCallback(res.data)
+                }else{
+                    successCallback(res.data);
+                }
+
             }
         })
         .catch((res) => {
-            console.log(res);
+            console.log(res.response.data);
             failureCallback(res.response.data)
         })
 }
@@ -86,12 +93,12 @@ export function loadGameApi(
     })
         .then((res) => {
             if(res.status === 200){
-                successCallback(res);
+                successCallback(res.data);
             }
         })
-        .catch((error) => {
-            console.log(error);
-            failureCallback(error);
+        .catch((res) => {
+            console.log(res.response.data);
+            failureCallback(res.response.data);
         })
 }
 

@@ -1,5 +1,5 @@
-import React from 'react';
-import io from 'socket.io-client';
+import React, {useContext} from 'react';
+// import io from 'socket.io-client';
 import './App.css';
 import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Welcome from './pages/Welcome';
@@ -8,12 +8,17 @@ import { GameProvider } from './contexts/GameContext';
 import './styles/Welcome.css';
 import './styles/Game.css';
 
-const SERVER = "http://localhost:3000";
+// const SERVER = "http://localhost:3000";
 
 
 function App() {
 
-    const socket = io(SERVER);
+    // // socket.io configuration and receiving broadcast
+    // const socket = io(SERVER);
+    // socket.on('gameDataUpdate', (gameData) => {
+    //     console.log('value change received in App.js');
+    //     sessionStorage.setItem('gameData', JSON.stringify(gameData));
+    // });
 
     return (
             <Router>
@@ -30,7 +35,6 @@ function App() {
                     </Route>
                 </Switch>
             </Router>
-
   );
 }
 

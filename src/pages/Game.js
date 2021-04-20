@@ -1,4 +1,5 @@
 import React, {useContext, useEffect} from 'react'
+import io from 'socket.io-client';
 import Row from 'react-bootstrap/Row'
 import Container from "react-bootstrap/Container";
 import Map from './components/Map'
@@ -10,24 +11,27 @@ import SideNav from "./components/SideNav";
 import Broadcast from "./components/Broadcast";
 import { GameContext} from "../contexts/GameContext";
 
+const SERVER = "http://localhost:3000";
+
 function Game(){
+    // states and context
     const {game, user} = useContext(GameContext);
     const [gameValue, setGameValue] = game;
     const [userValue, setUserValue] = user;
 
-    useEffect(() => {
-        if(!gameValue){
-            console.log('loading gameData from sessionStorage');
-            setGameValue(JSON.parse(sessionStorage.getItem('gameData')));
-            console.log(JSON.parse(sessionStorage.getItem('gameData')));
-        }
-        if(!userValue){
-            console.log('loading userData from sessionStorage');
-            setUserValue(JSON.parse(sessionStorage.getItem('userData')));
-            console.log(JSON.parse(sessionStorage.getItem('userData')));
-        }
+    // socket.io configuration and receiving game update broadcast
+    const socket = io(SERVER);
+    socket.on('gameDataUpdate', (gameData) => {
+        console.log('value change received in Game.js');
+        setGameValue(gameData);
+        sessionStorage.setItem('gameData', JSON.stringify(gameData));
+    });
 
-    })
+    // Data persistence upon page refresh/reload
+    useEffect(() => {
+        setGameValue(JSON.parse(sessionStorage.getItem('gameData')));
+        setUserValue(JSON.parse(sessionStorage.getItem('userData')));
+    }, [])
 
     return(
         <div>

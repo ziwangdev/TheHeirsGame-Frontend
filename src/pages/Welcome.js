@@ -25,8 +25,9 @@ export default function Welcome() {
     // Modal
     const [show, setShow] = useState(false);
     const [message, setMessage] = useState('');
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const [modalChoice, setModalChoice] = useState(false);
+    // backend api success/failure handler
+    const [canEnterGame, setCanEnterGame] = useState(false);
     // character form visibility
     const [showCharacterForm, setShowCharacterForm] = useState(true);
 
@@ -52,7 +53,7 @@ export default function Welcome() {
         }
         // If entering as host, create room
         if(identity === '主持'){
-            createRoomApi(name, room, createGameSuccess, createGameFailure);
+            createRoomApi(name, room, createGameSuccess, createGameChoice ,createGameFailure);
         }
 
         // If entering as player, check if room exists
@@ -66,8 +67,12 @@ export default function Welcome() {
     }
 
     function startGameSuccess(message){
-        // Configure modal
-        setMessage('已找到游戏房间！即将进入游戏。');
+        // Allow redirect to game page
+        setCanEnterGame(true);
+        // Clear any previous sessionStorage
+        sessionStorage.clear()
+        // Set Modal
+        setMessage(message);
         setShow(true);
         // Set and store user data
         let userObj = {
@@ -83,36 +88,80 @@ export default function Welcome() {
     }
 
     function startGameFailure(message){
+        // Set Modal
+        console.log(message);
         setMessage(message);
         setShow(true);
     }
 
     function createGameSuccess(message){
+        // Allow redirect to game page
+        setCanEnterGame(true);
+        // Clear any previous sessionStorage
+        sessionStorage.clear()
+        // Set Modal
         setMessage(message);
-
+        setShow(true);
+        // Set and store user data
+        let userObj = {
+            identity: identity,
+            name: name,
+            character: character,
+            roomID: room
+        }
+        setUserValue(userObj);
+        sessionStorage.setItem('userData', JSON.stringify(userObj));
+        // load game data
+        loadGameApi(room, identity, name, loadGameSuccess, loadGameFailure);
     }
 
     function createGameFailure(message){
+        // Set Modal
         setMessage(message);
         setShow(true);
     }
 
-    function loadGameSuccess(res){
-        // Set and store game data
-        setGameValue(res.data);
-        sessionStorage.setItem('gameData', JSON.stringify(res.data));
+    function createGameChoice(message){
+        // Set Modal
+        setCanEnterGame(true);
+        setModalChoice(true);
+        setMessage(message);
+        setShow(true);
+        // Set and store user data
+        let userObj = {
+            identity: identity,
+            name: name,
+            character: character,
+            roomID: room
+        }
+        sessionStorage.setItem('userData', JSON.stringify(userObj));
+        // load game data
+        loadGameApi(room, identity, name, loadGameSuccess, loadGameFailure);
+    }
 
+    function loadGameSuccess(res){
+        // Allow redirect to game page
+        setCanEnterGame(true);
+        // store game data
+        sessionStorage.setItem('gameData', JSON.stringify(res));
     }
 
     function loadGameFailure(){
-
+        setCanEnterGame(false);
     }
 
     function handleRedirect(){
         // Close modal
         setShow(false);
-        // Navigate to /game
-        history.push('/game');
+        // Navigate to /game if authentication successful
+        if(canEnterGame){
+            history.push('/game');
+        }
+    }
+
+    const dismissModalChoice = () => {
+        setShow(false);
+        setModalChoice(false);
     }
 
     return (
@@ -123,6 +172,7 @@ export default function Welcome() {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="dark" onClick={handleRedirect}>好的</Button>
+                    {modalChoice && <Button variant="dark" onClick={dismissModalChoice}>取消</Button>}
                 </Modal.Footer>
             </Modal>
             <img src={background} alt={'Welcome'} className={'welcome-background'}/>

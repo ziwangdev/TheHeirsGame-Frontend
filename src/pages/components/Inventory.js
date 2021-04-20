@@ -79,9 +79,11 @@ export default function Inventory(){
         }
     };
 
-    useEffect(() => {
-        console.log('useEffect in inventory.js');
-        if(userValue){
+    // useEffect(() => {
+
+
+    useEffect(()=>{
+        if(userValue && userValue.identity === '玩家'){
             // Find avatar
             let character = userValue.character;
             if(character === '金振宇'){
@@ -93,26 +95,21 @@ export default function Inventory(){
             else if(character === '金孝利'){
                 setAvatar(hyori);
             }
-            else if(character === '金允浩  '){
+            else if(character === '金允浩'){
                 setAvatar(yunho);
             }
             // Get user's player data
             let userPlayer = getUserPlayer(gameValue, userValue);
             let userPlayerCards = userPlayer.cards;
-            console.log('database cards: ');
-            console.log(userPlayerCards);
             let cardsKeys = Object.keys(userPlayerCards);
             for(var i = 0; i < cardsKeys.length; i++){
                 let updatedCards = cards;
                 updatedCards[cardsKeys[i]] = cardNameToModule(userPlayerCards[cardsKeys[i]]);
-                console.log('updated cards:');
-                console.log(updatedCards);
                 setCards(updatedCards);
             }
         }
-        console.log('after updating cards state: ')
-        console.log(cards);
-    });
+
+    }, [gameValue])
 
     return(
         <Container fluid={true} className={'inventory-container'}>

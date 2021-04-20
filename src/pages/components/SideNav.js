@@ -41,10 +41,15 @@ function SideNav(playersData){
     });
 
     useEffect(() => {
+        // // Load game value from session storage to refresh data
+        // setGameValue(JSON.parse(sessionStorage.getItem('gameData')));
+        // // Update corresponding UI
         if(gameValue){
+            console.log('setting players from gameValue:');
+            console.log(gameValue.players);
             setPlayers(gameValue.players);
         }
-    })
+    }, [gameValue])
 
     const toggleSideNav = () => {
         setShow(!show);

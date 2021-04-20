@@ -1,5 +1,5 @@
 import React from 'react';
-import socketClient from 'socket.io-client';
+import io from 'socket.io-client';
 import './App.css';
 import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Welcome from './pages/Welcome';
@@ -13,7 +13,7 @@ const SERVER = "http://localhost:3000";
 
 function App() {
 
-    var socket = socketClient (SERVER);
+    const socket = io(SERVER);
 
     return (
             <Router>

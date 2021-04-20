@@ -17,12 +17,14 @@ function Game(){
 
     useEffect(() => {
         if(!gameValue){
+            console.log('loading gameData from sessionStorage');
             setGameValue(JSON.parse(sessionStorage.getItem('gameData')));
             console.log(JSON.parse(sessionStorage.getItem('gameData')));
         }
         if(!userValue){
-            setGameValue(JSON.parse(sessionStorage.getItem('userValue')));
-            console.log(JSON.parse(sessionStorage.getItem('userValue')));
+            console.log('loading userData from sessionStorage');
+            setUserValue(JSON.parse(sessionStorage.getItem('userData')));
+            console.log(JSON.parse(sessionStorage.getItem('userData')));
         }
 
     })

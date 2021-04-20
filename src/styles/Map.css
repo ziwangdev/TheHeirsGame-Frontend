@@ -4,8 +4,8 @@
     padding: 200px 200px 300px 200px;
     overflow-y: scroll;
     overflow-x: scroll;
-    height: 160vh;
-    width: 160vw;
+    height: 150vh;
+    width: 140vw;
 }
 
 .grid-row{
@@ -112,8 +112,6 @@
     background: url(../images/walk-vertical.png) no-repeat;
     background-size: contain;
 }
-
-
 
 .cell-shop{
     border: solid gray 1px;

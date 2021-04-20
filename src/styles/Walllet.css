@@ -1,12 +1,24 @@
 .wallet-container{
     margin-left: 10px;
-    padding-top: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 10px;
     z-index: 11000;
     background: white;
     border-radius: 13px;
     border: solid #6c757d 1px;
     color: #454545;
     line-height: 100%;
+}
+
+.wallet-player-wealth{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.wallet-player-wealth h6{
+    margin: 0.5vh;
+}
+
+.wallet-player-wealth img{
+    height: 3vh;
 }

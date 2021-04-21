@@ -26,9 +26,12 @@ export default function TopNav(){
     // Room Number Modal
     const [showRoomNum, setShowRoomNum] = useState(false);
     // Control Panel Modal
-    const [allowControlPanel, setAllowControlPanel] = useState(true);
-    const [showControlPanel, setShowControlPanel] = useState(true);
-    const [controlPlayer, setControlPlayer] = useState(1);
+    const [allowControlPanel, setAllowControlPanel] = useState(false);
+    const [showControlPanel, setShowControlPanel] = useState(false);
+    const [controlPanelPlayer, setControlPanelPlayer] = useState(1);
+    const [controlPanelCashChange, setControlPanelCashChange] = useState('+');
+    const [controlPanelCashAmount, setControlPanelCashAmount] = useState(0);
+    const [controlPanelCard, setControlPanelCard] = useState('遥控骰子');
     // Players
     const [players, setPlayers] = useState({
         player1: {
@@ -64,8 +67,12 @@ export default function TopNav(){
         setShowControlPanel(!showControlPanel);
     }
 
-    const changeControlPlayer = (num) => {
-        setControlPlayer(num? 1:2);
+    const submitCashUpdate = () => {
+
+    }
+
+    const submitCardUpdate = () => {
+        
     }
 
     useEffect(() => {
@@ -86,6 +93,7 @@ export default function TopNav(){
             console.log(gameValue.players);
             setPlayers(gameValue.players);
         }
+
     }, [userValue])
 
     return(
@@ -145,8 +153,10 @@ export default function TopNav(){
                 <Modal.Body>
                     {/* Choose player */}
                     <Form.Row>
-                        <Form.Group as={Col} controlId="control-panel-player">
-                            <Form.Control as="select">
+                        <Form.Group as={Col}>
+                            <Form.Control as="select" value={controlPanelPlayer}
+                                          onChange={(e) => setControlPanelPlayer(e.target.value)}
+                            >
                                 <option>{players.player1.name}</option>
                                 <option>{players.player2.name}</option>
                                 <option>{players.player3.name}</option>
@@ -160,16 +170,20 @@ export default function TopNav(){
                             <Form.Label>现金</Form.Label>
                         </Form.Group>
                         <Form.Group as={"div"}>
-                            <Form.Control as="select">
+                            <Form.Control as="select" value={controlPanelCashChange}
+                                          onChange={(e) => setControlPanelCashChange(e.target.value)}
+                            >
                                 <option>+</option>
                                 <option>-</option>
                             </Form.Control>
                         </Form.Group>
                         <Form.Group as={"div"}>
-                            <Form.Control defaultValue={0}/>
+                            <Form.Control value={controlPanelCashAmount}
+                                          onChange={(e) => setControlPanelCashAmount(e.target.value)}
+                            />
                         </Form.Group>
                         <Form.Group as={"div"}>
-                            <Button variant={"success"} style={{position: 'relative', right: '0px'}}>确定</Button>
+                            <Button variant={"success"} onClick={submitCashUpdate}>确定</Button>
                         </Form.Group>
                     </Form.Row>
                     {/* Edit cash */}
@@ -178,13 +192,28 @@ export default function TopNav(){
                             <Form.Label>卡片</Form.Label>
                         </Form.Group>
                         <Form.Group as={"div"}>
-                            <Form.Control as="select">
+                            <Form.Control as="select" value={controlPanelCard}
+                                          onChange={(e) => setControlPanelCard(e.target.value)}
+                            >
                                 <option>遥控骰子</option>
                                 <option>路障卡</option>
+                                <option>炸弹卡</option>
+                                <option>定时炸弹</option>
+                                <option>购地卡</option>
+                                <option>盖楼卡</option>
+                                <option>拆楼卡</option>
+                                <option>恶魔卡</option>
+                                <option>改建卡</option>
+                                <option>汽车卡</option>
+                                <option>偷窃卡</option>
+                                <option>换屋卡</option>
+                                <option>换地卡</option>
+                                <option>转向卡</option>
+                                <option>乌龟卡</option>
                             </Form.Control>
                         </Form.Group>
-                        <Form.Group as={"div"} style={{display: 'inline-block'}}>
-                            <Button variant={"success"}>发送</Button>
+                        <Form.Group as={"div"}>
+                            <Button variant={"success"} onClick={submitCardUpdate}>发送</Button>
                         </Form.Group>
                     </Form.Row>
                 </Modal.Body>

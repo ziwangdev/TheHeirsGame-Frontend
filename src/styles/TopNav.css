@@ -18,3 +18,12 @@
 .topnav-button{
     margin-left: 10px;
 }
+
+.form-row{
+    align-items: center;
+
+}
+
+div.form-group{
+    margin: 10px;
+}

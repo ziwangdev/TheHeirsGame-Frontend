@@ -19,22 +19,22 @@ function SideNav(playersData){
     // Players
     const [players, setPlayers] = useState({
         player1: {
-            name: '未连接',
+            name: '玩家1（未连接）',
             cash: 0,
             property: 0
         },
         player2: {
-            name: '未连接',
+            name: '玩家2（未连接）',
             cash: 0,
             property: 0
         },
         player3: {
-            name: '未连接',
+            name: '玩家3（未连接）',
             cash: 0,
             property: 0
         },
         player4: {
-            name: '未连接',
+            name: '玩家4（未连接）',
             cash: 0,
             property: 0
         }
@@ -65,7 +65,7 @@ function SideNav(playersData){
                         <img src={jinwoo} alt={'Player 1'} className={'sidenav-player-avatar clickable'}/>
                     </div>
                     <div className={'sidenav-player-info'}>
-                        <h5>{players.player1.name === ''? '（未连接）':players.player1.name}</h5>
+                        <h5>{players.player1.name === ''? '玩家1（未连接）':players.player1.name}</h5>
                         <div className={'sidenav-player-wealth'}>
                             <img src={cash} alt={'Cash'}/>
                             <h6>${players.player1.cash}</h6>
@@ -83,7 +83,7 @@ function SideNav(playersData){
                     </div>
                     <div className={'sidenav-player-info'}>
                         {/*<h5>玩家2</h5>*/}
-                        <h5>{players.player2.name === ''? '（未连接）':players.player2.name}</h5>
+                        <h5>{players.player2.name === ''? '玩家2（未连接）':players.player2.name}</h5>
                         <div className={'sidenav-player-wealth'}>
                             <img src={cash} alt={'Cash'}/>
                             <h6>${players.player2.cash}</h6>
@@ -101,7 +101,7 @@ function SideNav(playersData){
                     </div>
                     <div className={'sidenav-player-info'}>
                         {/*<h5>玩家3</h5>*/}
-                        <h5>{players.player3.name === ''? '（未连接）':players.player3.name}</h5>
+                        <h5>{players.player3.name === ''? '玩家3（未连接）':players.player3.name}</h5>
                         <div className={'sidenav-player-wealth'}>
                             <img src={cash} alt={'Cash'}/>
                             <h6>${players.player3.cash}</h6>
@@ -118,7 +118,9 @@ function SideNav(playersData){
                     </div>
                     <div className={'sidenav-player-info'}>
                         {/*<h5>玩家4</h5>*/}
-                        <h5>{players.player4.name === ''? '（未连接）':players.player4.name}</h5>
+                        <h5>
+                            {players.player4.name === ''? '玩家4（未连接）':players.player4.name}
+                        </h5>
                         <div className={'sidenav-player-wealth'}>
                             <img src={cash} alt={'Cash'}/>
                             <h6>${players.player4.cash}</h6>

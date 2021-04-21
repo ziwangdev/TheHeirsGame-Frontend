@@ -44,7 +44,7 @@ function SideNav(playersData){
         // // Load game value from session storage to refresh data
         // setGameValue(JSON.parse(sessionStorage.getItem('gameData')));
         // // Update corresponding UI
-        if(gameValue){
+        if(gameValue != undefined && gameValue != null){
             console.log('setting players from gameValue:');
             console.log(gameValue.players);
             setPlayers(gameValue.players);

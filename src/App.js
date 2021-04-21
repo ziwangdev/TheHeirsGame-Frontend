@@ -13,13 +13,6 @@ import './styles/Game.css';
 
 function App() {
 
-    // // socket.io configuration and receiving broadcast
-    // const socket = io(SERVER);
-    // socket.on('gameDataUpdate', (gameData) => {
-    //     console.log('value change received in App.js');
-    //     sessionStorage.setItem('gameData', JSON.stringify(gameData));
-    // });
-
     return (
             <Router>
                 <Switch>

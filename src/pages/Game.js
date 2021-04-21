@@ -19,18 +19,26 @@ function Game(){
     const [gameValue, setGameValue] = game;
     const [userValue, setUserValue] = user;
 
+    console.log('Game.js');
+
     // socket.io configuration and receiving game update broadcast
-    const socket = io(SERVER);
+    let localRoomID = JSON.parse(sessionStorage.getItem('userData')).roomID;
+    const socket = io(SERVER, {query: {'roomID': localRoomID}});
     socket.on('gameDataUpdate', (gameData) => {
-        console.log('value change received in Game.js');
+        console.log('gameDataUpdate received in Game.js via socket.io');
         setGameValue(gameData);
         sessionStorage.setItem('gameData', JSON.stringify(gameData));
     });
+
+    socket.on('broadcastMessage', (message) => {
+        console.log(message);
+    })
 
     // Data persistence upon page refresh/reload
     useEffect(() => {
         setGameValue(JSON.parse(sessionStorage.getItem('gameData')));
         setUserValue(JSON.parse(sessionStorage.getItem('userData')));
+        console.log('Game.js useEffect');
     }, [])
 
     return(

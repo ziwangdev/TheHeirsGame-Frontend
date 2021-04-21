@@ -84,6 +84,7 @@ export default function Inventory(){
 
     useEffect(()=>{
         if(gameValue != undefined && gameValue != null) {
+            console.log(gameValue);
             if (userValue && userValue.identity === '玩家') {
                 // Find avatar
                 let character = userValue.character;
@@ -98,6 +99,7 @@ export default function Inventory(){
                 }
                 // Get user's player data
                 let userPlayer = getUserPlayer(gameValue, userValue);
+                console.log(userPlayer);
                 let userPlayerCards = userPlayer.cards;
                 let cardsKeys = Object.keys(userPlayerCards);
                 for (var i = 0; i < cardsKeys.length; i++) {

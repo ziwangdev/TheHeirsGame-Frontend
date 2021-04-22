@@ -1,10 +1,14 @@
 .calendar-container{
     z-index: 11000;
+    position: absolute;
+    top: 10px;
+    left: 10px;
     background: white;
     border-radius: 13px;
     border: solid #6c757d 1px;
     display: flex;
     align-items: start;
+
 }
 
 .calendar-info{

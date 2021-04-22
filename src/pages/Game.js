@@ -26,7 +26,7 @@ function Game(){
         socket.on('gameDataUpdate', (gameData) => {
             console.log('gameDataUpdate received in Game.js via socket.io');
             setGameValue(gameData);
-            sessionStorage.setItem('gameData', JSON.stringify(gameData));
+            sessionStorage.setItem('gameData', JSON.stringify(gameData)); //Cache game data in session storage
         });
 
         socket.on('broadcastMessage', (message) => {

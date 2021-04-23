@@ -1,8 +1,8 @@
 .calendar-container{
     z-index: 11000;
     position: absolute;
-    top: 10px;
-    left: 10px;
+    top: .5vh;
+    left: 1vw;
     background: white;
     border-radius: 13px;
     border: solid #6c757d 1px;
@@ -14,6 +14,7 @@
 .calendar-info{
     margin-top: 8%;
     position: absolute;
+    top: 1vh;
     display: flex;
     flex-direction: column;
     justify-content: center;

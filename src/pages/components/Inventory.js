@@ -8,8 +8,8 @@ import hyojin from '../../images/hyojin.jpg';
 import yunho from '../../images/yunho.jpg';
 import hyori from '../../images/hyori.jpg';
 
-import cardDice from '../../images/card-dice.png';
 import cardNull from '../../images/card-null.png';
+import cardDice from '../../images/card-dice.png';
 import cardStop from '../../images/card-stop.png';
 
 import diceUnknown from '../../images/dice-unknown.png';
@@ -83,8 +83,9 @@ export default function Inventory(){
 
 
     useEffect(()=>{
+        console.log('useEffect Inventory.js');
         if(gameValue != undefined && gameValue != null) {
-            console.log(gameValue);
+            console.log('gameValue not null in useEffect Inventory.js');
             if (userValue && userValue.identity === '玩家') {
                 // Find avatar
                 let character = userValue.character;
@@ -102,14 +103,15 @@ export default function Inventory(){
                 console.log(userPlayer);
                 let userPlayerCards = userPlayer.cards;
                 let cardsKeys = Object.keys(userPlayerCards);
+                let updatedCards = {...cards};
                 for (var i = 0; i < cardsKeys.length; i++) {
-                    let updatedCards = cards;
                     updatedCards[cardsKeys[i]] = cardNameToModule(userPlayerCards[cardsKeys[i]]);
+                    console.log('updatedCards');
+                    console.log(updatedCards);
                     setCards(updatedCards);
                 }
             }
         }
-
     }, [gameValue])
 
     return(

@@ -1,4 +1,7 @@
 .wallet-container{
+    position: absolute;
+    left: 9vw;
+    top: .5vh;
     margin-left: 10px;
     padding: 10px;
     z-index: 11000;

@@ -1,7 +1,10 @@
 import React, {useRef} from 'react';
-import Tooltip from 'react-bootstrap/Tooltip';
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Popover from "react-bootstrap/Popover";
+import jinwoo from '../../images/jinwoo.jpg'
+import hyori from '../../images/hyori.jpg'
+import hyojin from '../../images/hyojin.jpg'
+import yunho from '../../images/yunho.jpg'
 import '../../styles/Cell.css'
 
 
@@ -19,10 +22,10 @@ export default function Cell({data, cellType, cellPos}){
     const getCellPos = () => {
         // Configure cell position
         let xCoor = cellPos.substring(1, 3); //.substring(1, 3);
-        let top = parseInt(xCoor) * 80;
+        let top = (parseInt(xCoor) - 1) * 70;
         top = top.toString() + 'px';
         let yCoor = cellPos.substring(4, cellPos.end); //.substring(4, data.position.end);
-        let left = parseInt(yCoor) * 80;
+        let left = (parseInt(yCoor) - 1) * 70;
         left = left.toString() + 'px';
         return {top, left};
     }
@@ -30,11 +33,23 @@ export default function Cell({data, cellType, cellPos}){
 
     // Render cell
     if(cellType === 'path-cell'){
-
         let pos = getCellPos();
         let className = 'cell-small clickable cell-' + data.type;
         return(
-            <div className={className} id={cellPos} style={{top: pos.top, left: pos.left}}></div>
+            <OverlayTrigger
+                trigger={'click'}
+                placement={'top'}
+                show={data.placedHere && true}
+                overlay={
+                    <Popover >
+                        <Popover.Content  className={'indicator'}>
+                            <img src={jinwoo} alt={'Player 1'} className={'indicator-image'}/>
+                        </Popover.Content>
+                    </Popover>
+                }
+            >
+                <div className={className} id={cellPos} style={{top: pos.top, left: pos.left}}></div>
+            </OverlayTrigger>
         );
     }
     else if(cellType == 'land-cell'){
@@ -61,7 +76,6 @@ export default function Cell({data, cellType, cellPos}){
                         </Popover.Content>
                     </Popover>
                 }
-
             >
                 <div className={className} id={cellPos} style={{top: pos.top, left: pos.left}}></div>
             </OverlayTrigger>

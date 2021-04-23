@@ -47,7 +47,7 @@ module.exports.mapData = {
             adjacent: ['x03y07', 'x05y07']
         },
         x05y07: {
-            placedHere: '',
+            placedHere: ['player1'],
             type: 'minus-50000-cash',
             adjacent: ['x04y07', 'x05y08']
         },

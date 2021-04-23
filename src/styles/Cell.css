@@ -1,8 +1,15 @@
+.indicator-image{
+    height: 7vh;
+    border-radius: 10px;
+    margin: 2px;
+}
+
+
 .cell-small{
     position: absolute;
     background-color: lightgray;
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
     border: solid dimgray 1px;
     box-sizing: border-box;
     border-radius: 5px;
@@ -12,8 +19,8 @@
 .cell-small-land{
     position: absolute;
     background-color: white;
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
     border: solid dimgray 1px;
     box-sizing: border-box;
     border-radius: 5px;
@@ -24,8 +31,8 @@
 .cell-large-land{
     position: absolute;
     background-color: white;
-    width: 160px;
-    height: 160px;
+    width: 140px;
+    height: 140px;
     border: solid dimgray 1px;
     box-sizing: border-box;
     border-radius: 5px;

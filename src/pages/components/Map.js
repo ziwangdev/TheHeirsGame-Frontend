@@ -1,5 +1,4 @@
 import React, {useEffect, useRef, useState} from "react";
-
 import Cell from './Cell';
 import MapHelper from '../../helpers/MapHelper';
 import '../../styles/Map.css'
@@ -10,9 +9,8 @@ import yunho from '../../images/yunho.jpg'
 
 export default function Map() {
 
-        const player1SpawnPoint = useRef();
+        const player1SpawnPoint = 'x05y07';
         const player1Indicator = useRef();
-        const [properties, setProperties] = useState(null);
 
         useEffect(() => {
                 // console.log(player1SpawnPoint.current.getBoundingClientRect().top.toString());
@@ -20,13 +18,9 @@ export default function Map() {
                 // player1Indicator.current.style.left = player1SpawnPoint.current.getBoundingClientRect().left.toString() + 'px';
         }, [])
 
-        let pathDataSample = {
-                dataType: 'path-cell',
-                position: 'x02y04',
-                adjacent: ['x02y03', 'x02y05'],
-                type: 'cell-path-horizontal',
-                land: 'A1',
-                placedHere: ''
+        let playerIndicatorData = {
+                name: 'Player',
+                position: 'x05y07',
         }
 
         // both path cells and land cells
@@ -55,9 +49,12 @@ export default function Map() {
         }
 
         return(
-            <div className={'grid-container'}>
-                    {cells}
+            <div className={'map-container'}>
+                    <div className={'grid-container'}>
+                            {cells}
+                    </div>
             </div>
+
 
         );
 

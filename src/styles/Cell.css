@@ -1,5 +1,5 @@
 .indicator-image{
-    height: 7vh;
+    height: 6vh;
     border-radius: 10px;
     margin: 2px;
 }
@@ -39,6 +39,10 @@
     color: red;
 }
 
+.cell-hospital{
+    background: url(../images/hospital.png) no-repeat;
+    background-size: contain;
+}
 
 .cell-path-tl{
     background: url(../images/walk-tl.png) no-repeat;

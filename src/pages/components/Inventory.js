@@ -1,5 +1,6 @@
 import React, {useContext, useEffect, useState} from "react";
 import {GameContext} from "../../contexts/GameContext";
+import MapHelper from '../../helpers/MapHelper';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import { getUserPlayer } from '../../helpers/Helpers';
@@ -10,7 +11,7 @@ import hyori from '../../images/hyori.jpg';
 
 import cardNull from '../../images/card-null.png';
 import cardDice from '../../images/card-dice.png';
-import cardStop from '../../images/card-stop.png';
+import cardStop from '../../images/card-roadblock.png';
 
 import diceUnknown from '../../images/dice-unknown.png';
 import dice1 from '../../images/1.png';
@@ -43,6 +44,7 @@ export default function Inventory(){
     const {game, user} = useContext(GameContext);
     const [gameValue, setGameValue] = game;
     const [userValue, setUserValue] = user;
+    const [mapData, setMapData] = useState(MapHelper.mapData)
     const [dice, setDice] = useState('?');
     const [cards, setCards] = useState({
         card1: cardNull,
@@ -57,29 +59,45 @@ export default function Inventory(){
     const [avatar, setAvatar] = useState(jinwoo);
 
     const rollDice = () => {
-        let diceNum = getRandomInt(5);
-        diceNum++;
-        if (diceNum === 1){
-            document.getElementById('player-dice').src = dice1
+        // Check if player can roll dice
+        let playerKey = 'player1';
+        if(avatar === hyori){
+            playerKey = 'hyori';
+        } else if(avatar === yunho){
+            playerKey = 'yunho';
+        } else if(avatar === hyojin){
+            playerKey = 'hyojin';
         }
-        else if (diceNum === 2){
-            document.getElementById('player-dice').src = dice2
-        }
-        else if (diceNum === 3){
-            document.getElementById('player-dice').src = dice3
-        }
-        else if (diceNum === 4){
-            document.getElementById('player-dice').src = dice4
-        }
-        else if (diceNum === 5){
-            document.getElementById('player-dice').src = dice5
-        }
-        else if (diceNum === 6){
-            document.getElementById('player-dice').src = dice6
-        }
-    };
+        if(mapData.players[playerKey].theirTurn){
+            // Get random dice num
+            let diceNum = getRandomInt(5);
+            diceNum++;
+            // Set UI
+            if (diceNum === 1){
+                document.getElementById('player-dice').src = dice1
+            }
+            else if (diceNum === 2){
+                document.getElementById('player-dice').src = dice2
+            }
+            else if (diceNum === 3){
+                document.getElementById('player-dice').src = dice3
+            }
+            else if (diceNum === 4){
+                document.getElementById('player-dice').src = dice4
+            }
+            else if (diceNum === 5){
+                document.getElementById('player-dice').src = dice5
+            }
+            else if (diceNum === 6){
+                document.getElementById('player-dice').src = dice6
+            }
+            // Push data to database
 
-    // useEffect(() => {
+        }
+
+
+
+    };
 
 
     useEffect(()=>{
@@ -110,6 +128,8 @@ export default function Inventory(){
                     console.log(updatedCards);
                     setCards(updatedCards);
                 }
+                // Set Map Data
+                setMapData(gameValue.mapData.mapData);
             }
         }
     }, [gameValue])

@@ -5,10 +5,11 @@ import jinwoo from '../../images/jinwoo.jpg'
 import hyori from '../../images/hyori.jpg'
 import hyojin from '../../images/hyojin.jpg'
 import yunho from '../../images/yunho.jpg'
+import bomb from '../../images/bomb.png'
 import '../../styles/Cell.css'
 
 
-export default function Cell({data, cellType, cellPos}){
+export default function Cell({data, cellType, cellPos, playersHere = {}, objectHere = {}}){
     let cellDataSample = {
         position: 'x01y04',
         size: 'small',
@@ -31,19 +32,27 @@ export default function Cell({data, cellType, cellPos}){
     }
 
 
-    // Render cell
+    // Render path cell
     if(cellType === 'path-cell'){
         let pos = getCellPos();
         let className = 'cell-small clickable cell-' + data.type;
+
+        let somethingHere = (Object.keys(playersHere).length > 0 || Object.keys(objectHere).length > 0)? true:false;
         return(
             <OverlayTrigger
-                trigger={'click'}
+                trigger={'click focus'}
                 placement={'top'}
-                show={data.placedHere && true}
+                key={cellPos}
+                show={somethingHere && true}
                 overlay={
                     <Popover >
                         <Popover.Content  className={'indicator'}>
-                            <img src={jinwoo} alt={'Player 1'} className={'indicator-image'}/>
+                            {playersHere.player1 !== undefined && <img src={jinwoo} alt={'Player 1'} className={'indicator-image'}/>}
+                            {playersHere.player2 !== undefined && <img src={hyori} alt={'Player 2'} className={'indicator-image'}/>}
+                            {playersHere.player3 !== undefined && <img src={yunho} alt={'Player 3'} className={'indicator-image'}/>}
+                            {playersHere.player4 !== undefined && <img src={hyojin} alt={'Player 4'} className={'indicator-image'}/>}
+
+                            {objectHere.img === 'bomb' && <img src={bomb} alt={'bomb'} className={'indicator-image'}/>}
                         </Popover.Content>
                     </Popover>
                 }
@@ -52,22 +61,20 @@ export default function Cell({data, cellType, cellPos}){
             </OverlayTrigger>
         );
     }
+    // Render land cell
     else if(cellType == 'land-cell'){
-        let pos = null;
+        let pos = getCellPos();
         let className = null;
         if(data.size === 'small'){
-            console.log(data);
-            pos = getCellPos();
             className = 'cell-small-land clickable';
         }else{
-            console.log(data);
-            pos = getCellPos();
             className = 'cell-large-land clickable';
         }
         return(
             <OverlayTrigger
-                trigger={'hover'}
+                trigger={'hover focus'}
                 placement={'top'}
+                key={cellPos}
                 overlay={
                     <Popover>
                         <Popover.Title as={'h4'}>空地</Popover.Title>

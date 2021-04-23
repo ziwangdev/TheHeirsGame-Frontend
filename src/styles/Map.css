@@ -1,6 +1,5 @@
 
 .grid-container{
-    padding-bottom: 2000px;
     height: 150vh;
     width: 140vw;
     position: absolute;
@@ -8,176 +7,21 @@
     overflow: scroll;
 }
 
-.grid-row{
-    display: flex;
-    flex-direction: row;
-    text-align: center;
-    justify-content: center;
+.player-indicator{
+    z-index: 15000;
+    position: absolute;
 }
 
-.grid-cell{
-    min-width: 80px;
-    height: 80px;
-    border: solid white 1px;
-    border-radius: 5px;
-    color: rgba(0,0,255,1);
-}
-
-.grid-cell:hover{
-    opacity: 50%;
-}
-
-.grid-cell:active{
-    opacity: 100%;
-}
-
-.cell-land-small{
-    border: solid gray 1px;
-    background: lightgray;
-}
-
-.cell-land-large-tl{
-    border-top: solid gray 1px;
-    border-left: solid gray 1px;
-    border-right: solid lightgray 1px;
-    border-bottom: solid lightgray 1px;
-    background: lightgray;
-    border-radius: 5px 0px 0px 0px;
-}
-
-.cell-land-large-tr{
-    border-top: solid gray 1px;
-    border-right: solid gray 1px;
-    border-left: solid lightgray 1px;
-    border-bottom: solid lightgray 1px;
-    background: lightgray;
-    border-radius: 0px 5px 0px 0px;
-}
-
-.cell-land-large-bl{
-    border-bottom: solid gray 1px;
-    border-left: solid gray 1px;
-    border-top: solid lightgray 1px;
-    border-right: solid lightgray 1px;
-    background: lightgray;
-    border-radius: 0px 0px 0px 5px;
-}
-
-.cell-land-large-br{
-    border-bottom: solid gray 1px;
-    border-right: solid gray 1px;
-    border-top: solid lightgray 1px;
-    border-left: solid lightgray 1px;
-    background: lightgray;
-    border-radius: 0px 0px 5px 0px;
-}
-
-.cell-path{
-    border: solid gray 1px;
-    background: lightgray;
-}
-
-.cell-path-tl{
-    border: solid gray 1px;
-    background: url(../images/walk-tl.png) no-repeat;
-    background-size: contain;
-}
-
-.cell-path-tr{
-    border: solid gray 1px;
-    background: url(../images/walk-tr.png) no-repeat;
-    background-size: contain;
-}
-
-.cell-path-bl{
-    border: solid gray 1px;
-    background: url(../images/walk-bl.png) no-repeat;
-    background-size: contain;
-}
-
-.cell-path-br{
-    border: solid gray 1px;
-    background: url(../images/walk-br.png) no-repeat;
-    background-size: contain;
-}
-
-.cell-path-horizontal{
-    border: solid gray 1px;
-    background: url(../images/walk-horizontal.png) no-repeat;
-    background-size: contain;
-}
-
-.cell-path-vertical{
-    border: solid gray 1px;
-    background: url(../images/walk-vertical.png) no-repeat;
-    background-size: contain;
-}
-
-.cell-shop{
-    border: solid gray 1px;
-    background: url(../images/shop.png) no-repeat;
-    background-size: contain;
-}
-
-.cell-plus-20000-cash{
-    border: solid gray 1px;
-    background: url(../images/20000.png) no-repeat;
-    background-size: contain;
+.player-indicator:hover{
+    visibility: hidden;
 }
 
 
-.cell-plus-50000-cash{
-    border: solid gray 1px;
-    background: url(../images/50000.png) no-repeat;
-    background-size: contain;
-}
-
-.cell-plus-100000-cash{
-    border: solid gray 1px;
-    background: url(../images/100000.png) no-repeat;
-    background-size: contain;
-}
-
-.cell-minus-50000-cash{
-    border: solid gray 1px;
-    background: url(../images/50000-loss.png) no-repeat;
-    background-size: contain;
-}
-
-.cell-minus-20000-cash{
-    border: solid gray 1px;
-    background: url(../images/20000-loss.png) no-repeat;
-    background-size: contain;
-}
-
-.cell-random-event{
-    border: solid gray 1px;
-    background: url(../images/random.png) no-repeat;
-    background-size: contain;
-}
-
-.cell-plus-1-card{
-    border: solid gray 1px;
-    background: url(../images/plus1.png) no-repeat;
-    background-size: contain;
-}
-
-.cell-plus-2-card{
-    border: solid gray 1px;
-    background: url(../images/plus2.png) no-repeat;
-    background-size: contain;
-}
-
-.cell-house-1-hyori{
-    border: solid darkgoldenrod 1px;
-    background: url(../images/house-1-hyori.png) no-repeat;
-    background-size: contain;
-}
 
 /* NEW */
 .cell-small{
     position: absolute;
-    background-color: white;
+    background-color: lightgray;
     width: 80px;
     height: 80px;
     border: solid dimgray 1px;
@@ -188,7 +32,7 @@
 
 .cell-large{
     position: absolute;
-    background-color: white;
+    background-color: lightgray;
     width: 160px;
     height: 160px;
     border: solid dimgray 1px;

@@ -1,0 +1,110 @@
+.cell-small{
+    position: absolute;
+    background-color: lightgray;
+    width: 80px;
+    height: 80px;
+    border: solid dimgray 1px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    color: red;
+}
+
+.cell-small-land{
+    position: absolute;
+    background-color: white;
+    width: 80px;
+    height: 80px;
+    border: solid dimgray 1px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    color: red;
+}
+
+
+.cell-large-land{
+    position: absolute;
+    background-color: white;
+    width: 160px;
+    height: 160px;
+    border: solid dimgray 1px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    color: red;
+}
+
+
+.cell-path-tl{
+    background: url(../images/walk-tl.png) no-repeat;
+    background-size: contain;
+}
+
+.cell-path-tr{
+    background: url(../images/walk-tr.png) no-repeat;
+    background-size: contain;
+}
+
+.cell-path-bl{
+    background: url(../images/walk-bl.png) no-repeat;
+    background-size: contain;
+}
+
+.cell-path-br{
+    background: url(../images/walk-br.png) no-repeat;
+    background-size: contain;
+}
+
+.cell-path-horizontal{
+    background: url(../images/walk-horizontal.png) no-repeat;
+    background-size: contain;
+}
+
+.cell-path-vertical{
+    background: url(../images/walk-vertical.png) no-repeat;
+    background-size: contain;
+}
+
+.cell-shop{
+    background: url(../images/shop.png) no-repeat;
+    background-size: contain;
+}
+
+.cell-plus-20000-cash{
+    background: url(../images/20000.png) no-repeat;
+    background-size: contain;
+}
+
+
+.cell-plus-50000-cash{
+    background: url(../images/50000.png) no-repeat;
+    background-size: contain;
+}
+
+.cell-plus-100000-cash{
+    background: url(../images/100000.png) no-repeat;
+    background-size: contain;
+}
+
+.cell-minus-50000-cash{
+    background: url(../images/50000-loss.png) no-repeat;
+    background-size: contain;
+}
+
+.cell-minus-20000-cash{
+    background: url(../images/20000-loss.png) no-repeat;
+    background-size: contain;
+}
+
+.cell-random-event{
+    background: url(../images/random.png) no-repeat;
+    background-size: contain;
+}
+
+.cell-plus-1-card{
+    background: url(../images/plus1.png) no-repeat;
+    background-size: contain;
+}
+
+.cell-plus-2-card{
+    background: url(../images/plus2.png) no-repeat;
+    background-size: contain;
+}

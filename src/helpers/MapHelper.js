@@ -5,7 +5,7 @@ module.exports.mapData = {
         player3: '',
         player4: ''
     },
-    path:{
+    pathCells:{
         x02y03: {
             placedHere: '',
             type: 'land',
@@ -483,7 +483,7 @@ module.exports.mapData = {
             adjacent: ['x13y11', 'x15y11']
         }
     },
-    land:{
+    landCells:{
         A1:{
             position: 'x01y04',
             owner: 'none',
@@ -525,7 +525,7 @@ module.exports.mapData = {
             level: 0
         },
         B2:{
-            position: ['x04y12', 'x04y13', 'x03y12', 'x03y13'],
+            position: ['x03y12', 'x04y13', 'x04y12', 'x03y13'],
             owner: 'none',
             building: 'none',
             size: 'large',
@@ -613,7 +613,7 @@ module.exports.mapData = {
             level: 0
         },
         D4:{
-            position: ['x15y17','x16y17', 'x15y16', 'x16y16'],
+            position: ['x15y16','x16y17', 'x15y17', 'x16y16'],
             owner: 'none',
             building: 'none',
             size: 'large',
@@ -661,7 +661,7 @@ module.exports.mapData = {
             level: 0
         },
         E5:{
-            position: ['x13y12', 'x12y12', 'x13y13', 'x12y13'],
+            position: ['x12y12', 'x13y12', 'x13y13', 'x12y13'],
             owner: 'none',
             building: 'none',
             size: 'large',
@@ -701,7 +701,7 @@ module.exports.mapData = {
             level: 0
         },
         G1:{
-            position: ['x14y04', 'x13y04', 'x14y03', 'x13y03'],
+            position: ['x13y03', 'x13y04', 'x14y03', 'x14y04'],
             owner: 'none',
             building: 'none',
             size: 'large',
@@ -725,7 +725,7 @@ module.exports.mapData = {
             level: 0
         },
         H1:{
-            position: ['x07y01', 'x07y02', 'x06y01', 'x06y02'],
+            position: ['x06y01', 'x07y02', 'x07y01', 'x06y02'],
             owner: 'none',
             building: 'none',
             size: 'large',
@@ -757,7 +757,7 @@ module.exports.mapData = {
             level: 0
         },
         I1:{
-            position: 'x09y05',
+            position: 'x08y05',
             owner: 'none',
             building: 'none',
             size: 'small',
@@ -765,7 +765,7 @@ module.exports.mapData = {
             level: 0
         },
         I2:{
-            position: 'x09y06',
+            position: 'x08y06',
             owner: 'none',
             building: 'none',
             size: 'small',
@@ -773,7 +773,7 @@ module.exports.mapData = {
             level: 0
         },
         I3:{
-            position: ['x08y07', 'x08y08', 'x07y07', 'x07y08'],
+            position: ['x07y07', 'x08y08', 'x08y07', 'x07y08'],
             owner: 'none',
             building: 'none',
             size: 'large',
@@ -781,7 +781,7 @@ module.exports.mapData = {
             level: 0
         },
         I4:{
-            position: ['x08y09', 'x08y10', 'x07y09', 'x07y10'],
+            position: ['x07y09', 'x08y10', 'x08y09', 'x07y10'],
             owner: 'none',
             building: 'none',
             size: 'large',

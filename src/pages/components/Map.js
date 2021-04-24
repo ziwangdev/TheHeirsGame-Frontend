@@ -79,10 +79,8 @@ export default function Map() {
         }
 
         return(
-            <div className={'map-container'}>
-                    <div className={'grid-container'}>
-                            {cells}
-                    </div>
+            <div className={'grid-container'}>
+                    {cells}
             </div>
         );
 

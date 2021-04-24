@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import io from 'socket.io-client';
 import Row from 'react-bootstrap/Row'
 import Container from "react-bootstrap/Container";
@@ -18,11 +18,13 @@ function Game(){
     const {game, user} = useContext(GameContext);
     const [gameValue, setGameValue] = game;
     const [userValue, setUserValue] = user;
+    const [socket, setSocket] = useState(null);
 
     // socket.io configuration and receiving game update broadcast
     if(sessionStorage.getItem('userData') != null){
         let localRoomID = JSON.parse(sessionStorage.getItem('userData')).roomID;
         const socket = io(SERVER, {query: {'roomID': localRoomID}});
+        setSocket(socket);
         socket.on('gameDataUpdate', (gameData) => {
             console.log('gameDataUpdate received in Game.js via socket.io');
             setGameValue(gameData);
@@ -33,6 +35,8 @@ function Game(){
             console.log(message);
         })
     }
+
+
 
 
     // Data persistence upon page refresh/reload

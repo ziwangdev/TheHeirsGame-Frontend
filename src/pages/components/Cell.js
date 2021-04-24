@@ -72,7 +72,7 @@ export default function Cell({data, cellType, cellPos, playersHere = {}, objectH
         }
         return(
             <OverlayTrigger
-                trigger={'hover focus'}
+                trigger={'hover'}
                 placement={'top'}
                 key={cellPos}
                 overlay={

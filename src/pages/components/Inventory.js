@@ -46,6 +46,8 @@ export default function Inventory(){
     const [userValue, setUserValue] = user;
     const [mapData, setMapData] = useState(MapHelper.mapData)
     const [dice, setDice] = useState('?');
+    const [diceThrown, setDiceThrown] = useState(false);
+    const [atLand, setAtLand] = useState(false);
     const [cards, setCards] = useState({
         card1: cardNull,
         card2: cardNull,
@@ -59,6 +61,9 @@ export default function Inventory(){
     const [avatar, setAvatar] = useState(jinwoo);
 
     const rollDice = () => {
+        if(diceThrown){
+            return;
+        }
         // Check if player can roll dice
         let playerKey = 'player1';
         if(avatar === hyori){
@@ -91,14 +96,77 @@ export default function Inventory(){
             else if (diceNum === 6){
                 document.getElementById('player-dice').src = dice6
             }
-            // Push data to database
-
+            playerGoesForward(diceNum);
         }
-
-
-
     };
 
+    const playerGoesForward = (numSteps) => {
+        console.log('going forward for ' + numSteps + 'steps');
+        // Find player facing
+        let playerKey = 'player1';
+        if(avatar === hyori){
+            playerKey = 'player2';
+        } else if(avatar === yunho){
+            playerKey = 'player3';
+        } else if(avatar === hyojin){
+            playerKey = 'player4';
+        }
+        let playerMapData = mapData.players[playerKey];
+
+        let currPos = playerMapData.position;
+        let prevPos = playerMapData.prevPosition;
+        let facing = playerMapData.facing;
+        console.log(currPos);
+        let adjacentCells = mapData.pathCells[currPos].adjacent;
+
+        // Get moves for the number of steps
+        for(var i = 0; i < numSteps; i++) {
+            let nextPos = getNextPos(currPos, prevPos, facing, adjacentCells);
+            prevPos = currPos;
+            currPos = nextPos;
+            // set player to the last pos in moves
+
+
+        }
+        let newMapData = {...mapData}; // shallow copy, changing newMapData does not affect mapData
+        newMapData.players[playerKey].position = currPos
+        newMapData.players[playerKey].prevPosition = prevPos;
+        setMapData(newMapData);
+        let newGameValue = {...gameValue};
+        newGameValue.mapData.mapData = newMapData;
+        console.log(newGameValue);
+        setGameValue(newGameValue);
+
+        // set dice thrown
+        setDiceThrown(true);
+    }
+
+
+    const getNextPos = (currPos, prevPos, facing, prevFacing) => {
+        // eliminate prevPos from adjacentCells
+        let adjacentCells = mapData.pathCells[currPos].adjacent;
+        if(adjacentCells.length === 1){
+            // Player has reached a dead end, can turn around
+            return adjacentCells[0];
+        }
+
+        let validAdjacentCells = [];
+        for(var i = 0; i < adjacentCells.length; i++){
+            if(adjacentCells[i] !== prevPos){
+                validAdjacentCells.push(adjacentCells[i]);
+            }
+        }
+        // If remaining option is only 1 cell, return that cell
+        console.log(validAdjacentCells);
+        if(validAdjacentCells.length === 1){
+            return validAdjacentCells[0];
+        }
+        // else get one of the remaining options randomly and return it
+        else{
+            let randomIndex = getRandomInt(validAdjacentCells.length);
+            return validAdjacentCells[randomIndex];
+        }
+    }
 
     useEffect(()=>{
         console.log('useEffect Inventory.js');

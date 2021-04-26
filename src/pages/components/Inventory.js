@@ -4,15 +4,15 @@ import MapHelper from '../../helpers/MapHelper';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import { getUserPlayer } from '../../helpers/Helpers';
+import { playerMovesApi } from "../../api/BackendApiCalls";
+
 import jinwoo from '../../images/jinwoo.jpg';
 import hyojin from '../../images/hyojin.jpg';
 import yunho from '../../images/yunho.jpg';
 import hyori from '../../images/hyori.jpg';
-
 import cardNull from '../../images/card-null.png';
 import cardDice from '../../images/card-dice.png';
 import cardStop from '../../images/card-roadblock.png';
-
 import diceUnknown from '../../images/dice-unknown.png';
 import dice1 from '../../images/1.png';
 import dice2 from '../../images/2.png';
@@ -21,6 +21,8 @@ import dice4 from '../../images/4.png';
 import dice5 from '../../images/5.png';
 import dice6 from '../../images/6.png';
 import '../../styles/Inventory.css';
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
 
 
 function getRandomInt(max) {
@@ -60,14 +62,10 @@ export default function Inventory(){
 
     const rollDice = () => {
         // Check if player can roll dice
-        let playerKey = 'player1';
-        if(avatar === hyori){
-            playerKey = 'hyori';
-        } else if(avatar === yunho){
-            playerKey = 'yunho';
-        } else if(avatar === hyojin){
-            playerKey = 'hyojin';
+        if(!userValue){
+            return;
         }
+        let playerKey = userValue.playerKey;
         if(mapData.players[playerKey].theirTurn){
             // Get random dice num
             let diceNum = getRandomInt(5);
@@ -91,13 +89,71 @@ export default function Inventory(){
             else if (diceNum === 6){
                 document.getElementById('player-dice').src = dice6
             }
-            // Push data to database
+            // Get next position
+            if(mapData.players[playerKey]){
+                handleSteps(diceNum, mapData.players[playerKey]);
+            }
+
 
         }
 
-
-
     };
+
+    const handleSteps = (numSteps, playerData) => {
+        console.log(playerData);
+        let targetPos = getTargetPos(playerData.position, playerData.prevPosition, numSteps);
+        console.log(targetPos);
+        if(nextPosValid(targetPos) && gameValue && userValue){
+            playerMovesApi(gameValue.roomID, userValue.playerKey, playerData.position, targetPos, playerMovesSuccess, playerMovesFailure);
+        }
+    }
+
+    const playerMovesSuccess = (resData) => {
+        console.log(resData)
+    }
+
+    const playerMovesFailure = (errorMessage) => {
+        console.log(errorMessage)
+    }
+
+    const nextPosValid = (nextPos) => {
+        return true
+    }
+
+    const getTargetPos = (currPos, prevPos, numSteps) => {
+        let targetPos = null;
+        for(var i = 0; i < numSteps; i++){
+            targetPos = getNextPos(currPos, prevPos);
+            prevPos = currPos;
+            currPos = targetPos;
+        }
+        return targetPos;
+    }
+    const getNextPos = (currPos, prevPos) => {
+        // eliminate prevPos from adjacentCells
+        let adjacentCells = mapData.pathCells[currPos].adjacent;
+        if(adjacentCells.length === 1){
+            // Player has reached a dead end, can turn around
+            return adjacentCells[0];
+        }
+
+        let validAdjacentCells = [];
+        for(var i = 0; i < adjacentCells.length; i++){
+            if(adjacentCells[i] !== prevPos){
+                validAdjacentCells.push(adjacentCells[i]);
+            }
+        }
+        // If remaining option is only 1 cell, return that cell
+        //console.log(validAdjacentCells);
+        if(validAdjacentCells.length === 1){
+            return validAdjacentCells[0];
+        }
+        // else get one of the remaining options randomly and return it
+        else{
+            let randomIndex = getRandomInt(validAdjacentCells.length);
+            return validAdjacentCells[randomIndex];
+        }
+    }
 
 
     useEffect(()=>{
@@ -136,6 +192,7 @@ export default function Inventory(){
 
     return(
         <Container fluid={true} className={'inventory-container'}>
+            {/*游戏机制 Modal*/}
             <img src={avatar} alt={'Player Avatar'} className={'player-avatar'}/>
             <div className={'dice-container clickable'} >
                 <img id={'player-dice'} alt={'Dice'} onClick={rollDice} src={diceUnknown}/>

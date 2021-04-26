@@ -126,3 +126,32 @@ export function hostStartGameApi(
         })
 }
 
+/* POST request to move player */
+export function playerMovesApi(
+    roomID,
+    player,
+    currPos,
+    targetPos,
+    successCallback,
+    failureCallback
+) {
+    axios({
+        method: 'post',
+        url: 'http://localhost:3000/game/post/player-moves',
+        data: {
+            roomID: roomID,
+            player: player,
+            currPos: currPos,
+            targetPos: targetPos
+        }
+    })
+        .then((res) => {
+            if (res.status === 200) {
+                successCallback(res.data);
+            }
+        })
+        .catch((res) => {
+            console.log(res.response.data);
+            failureCallback(res.response.data);
+        })
+}

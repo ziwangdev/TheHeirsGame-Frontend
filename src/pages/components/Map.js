@@ -79,11 +79,12 @@ export default function Map() {
         }
 
         return(
-            <div className={'map-container'}>
                     <div className={'grid-container'}>
                             {cells}
+                            <div className={'grid-manual-padding'}>
+
+                            </div>
                     </div>
-            </div>
         );
 
 }

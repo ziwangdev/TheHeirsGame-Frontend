@@ -23,12 +23,17 @@ export default function Cell({data, cellType, cellPos, playersHere = {}, objectH
     const getCellPos = () => {
         // Configure cell position
         let xCoor = cellPos.substring(1, 3); //.substring(1, 3);
-        let top = (parseInt(xCoor) - 1) * 70;
+        let top = (parseInt(xCoor) - 1) * 70 + 150;
         top = top.toString() + 'px';
         let yCoor = cellPos.substring(4, cellPos.end); //.substring(4, data.position.end);
-        let left = (parseInt(yCoor) - 1) * 70;
+        let left = (parseInt(yCoor) - 1) * 70 + 20;
         left = left.toString() + 'px';
-        return {top, left};
+        let paddingBottom = 0;
+        if(parseInt(xCoor) === 19){
+            console.log(cellPos);
+            paddingBottom = '800px';
+        }
+        return {top, left, paddingBottom};
     }
 
 
@@ -40,7 +45,7 @@ export default function Cell({data, cellType, cellPos, playersHere = {}, objectH
         let somethingHere = (Object.keys(playersHere).length > 0 || Object.keys(objectHere).length > 0)? true:false;
         return(
             <OverlayTrigger
-                trigger={'click focus'}
+                trigger={['click', 'focus']}
                 placement={'top'}
                 key={cellPos}
                 show={somethingHere && true}
@@ -72,7 +77,7 @@ export default function Cell({data, cellType, cellPos, playersHere = {}, objectH
         }
         return(
             <OverlayTrigger
-                trigger={'hover focus'}
+                trigger={['hover', 'focus']}
                 placement={'top'}
                 key={cellPos}
                 overlay={

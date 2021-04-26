@@ -102,5 +102,27 @@ export function loadGameApi(
         })
 }
 
-/* POST request to */
+/* POST request to start game*/
+export function hostStartGameApi(
+    roomID,
+    successCallback,
+    failureCallback
+){
+    axios({
+        method: 'post',
+        url: 'http://localhost:3000/game/post/start-game',
+        data:{
+            roomID: roomID
+        }
+    })
+        .then((res) => {
+            if(res.status === 200){
+                successCallback(res.data);
+            }
+        })
+        .catch((res) => {
+            console.log(res.response.data);
+            failureCallback(res.response.data);
+        })
+}
 

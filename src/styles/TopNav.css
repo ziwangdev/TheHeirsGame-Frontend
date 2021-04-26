@@ -16,7 +16,13 @@
 }
 
 .topnav-button{
-    margin-left: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.topnav-dropdown{
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 .form-row{

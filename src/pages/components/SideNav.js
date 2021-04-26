@@ -15,6 +15,7 @@ function SideNav(playersData){
     const [buttonText, setButtonText] = useState('>');
     const {game, user} = useContext(GameContext);
     const [gameValue, setGameValue] = game;
+    const [whoseTurn, setWhoseTurn] = useState('none');
 
     // Players
     const [players, setPlayers] = useState({
@@ -41,14 +42,18 @@ function SideNav(playersData){
     });
 
     useEffect(() => {
-        // // Load game value from session storage to refresh data
-        // setGameValue(JSON.parse(sessionStorage.getItem('gameData')));
-        // // Update corresponding UI
+        // Update corresponding UI
         if(gameValue != undefined && gameValue != null){
             console.log('setting players from gameValue:');
             console.log(gameValue.players);
             setPlayers(gameValue.players);
+
+            // Highlight player who has their turn
+            let whoseTurn = gameValue.whoseTurn;
+            setWhoseTurn(whoseTurn);
         }
+
+
     }, [gameValue])
 
     const toggleSideNav = () => {
@@ -62,7 +67,11 @@ function SideNav(playersData){
             <div className={'sidenav-player-list'} hidden={show? false:true}>
                 <div className={'sidenav-player-container'}>
                     <div>
-                        <img src={jinwoo} alt={'Player 1'} className={'sidenav-player-avatar clickable'}/>
+                        <img src={jinwoo} alt={'Player 1'}
+                             className={'sidenav-player-avatar clickable'}
+                             id={'sidenav-player1-avatar'}
+                             style={whoseTurn === 'player1'? {border: 'solid #ffcc00 4px'} : {border: 'none'}}
+                        />
                     </div>
                     <div className={'sidenav-player-info'}>
                         <h5>{players.player1.name === ''? '玩家1（未连接）':players.player1.name}</h5>
@@ -79,7 +88,11 @@ function SideNav(playersData){
                 </div>
                 <div className={'sidenav-player-container'}>
                     <div>
-                        <img src={hyori} alt={'Player 2'} className={'sidenav-player-avatar clickable'}/>
+                        <img src={hyori} alt={'Player 2'}
+                             className={'sidenav-player-avatar clickable'}
+                             id={'sidenav-player2-avatar'}
+                             style={whoseTurn === 'player2'? {border: 'solid #ffcc00 4px'} : {border: 'none'}}
+                        />
                     </div>
                     <div className={'sidenav-player-info'}>
                         {/*<h5>玩家2</h5>*/}
@@ -97,7 +110,11 @@ function SideNav(playersData){
                 </div>
                 <div className={'sidenav-player-container'}>
                     <div>
-                        <img src={yunho} alt={'Player 3'} className={'sidenav-player-avatar clickable'}/>
+                        <img src={yunho} alt={'Player 3'}
+                             className={'sidenav-player-avatar clickable'}
+                             id={'sidenav-player3-avatar'}
+                             style={whoseTurn === 'player3'? {border: 'solid #ffcc00 4px'} : {border: 'none'}}
+                        />
                     </div>
                     <div className={'sidenav-player-info'}>
                         {/*<h5>玩家3</h5>*/}
@@ -114,7 +131,11 @@ function SideNav(playersData){
                 </div>
                 <div className={'sidenav-player-container'}>
                     <div>
-                        <img src={hyojin} alt={'Player 4'} className={'sidenav-player-avatar clickable'}/>
+                        <img src={hyojin} alt={'Player 4'}
+                             className={'sidenav-player-avatar clickable'}
+                             id={'sidenav-player4-avatar'}
+                             style={whoseTurn === 'player4'? {border: 'solid #ffcc00 4px'} : {border: 'none'}}
+                        />
                     </div>
                     <div className={'sidenav-player-info'}>
                         {/*<h5>玩家4</h5>*/}

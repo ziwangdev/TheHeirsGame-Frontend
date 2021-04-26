@@ -7,6 +7,7 @@ import Modal from 'react-bootstrap/Modal'
 import Form from 'react-bootstrap/Form'
 import Col from 'react-bootstrap/Col'
 import {GameContext} from "../../contexts/GameContext";
+import { hostStartGameApi} from "../../api/BackendApiCalls";
 
 
 import '../../styles/TopNav.css'
@@ -25,6 +26,8 @@ export default function TopNav(){
     const handleShow = () => setShowTips(true);
     // Room Number Modal
     const [showRoomNum, setShowRoomNum] = useState(false);
+    // Start game button
+    const [gameStarted, setGameStarted] = useState(false);
     // Control Panel Modal
     const [allowControlPanel, setAllowControlPanel] = useState(false);
     const [showControlPanel, setShowControlPanel] = useState(false);
@@ -63,6 +66,21 @@ export default function TopNav(){
         history.push('/');
     }
 
+    const toggleStartGame = () => {
+        if(userValue){
+            hostStartGameApi(userValue.roomID, hostStartGameSuccess, hostStartGameFailure);
+        }
+        setGameStarted(true);
+    }
+
+    const hostStartGameSuccess = (resData) => {
+        console.log(resData);
+    }
+
+    const hostStartGameFailure = (errorMessage) => {
+        console.log(errorMessage);
+    }
+
     const toggleControlPanel = () => {
         setShowControlPanel(!showControlPanel);
     }
@@ -72,7 +90,7 @@ export default function TopNav(){
     }
 
     const submitCardUpdate = () => {
-        
+
     }
 
     useEffect(() => {
@@ -98,6 +116,14 @@ export default function TopNav(){
 
     return(
         <div className={'nav-container'} bg={'light'} expand={'lg'}>
+
+            {
+                allowControlPanel && !gameStarted &&
+                <Button variant={'outline-success'} className={'topnav-button'} onClick={toggleStartGame}>
+                    开始游戏
+                </Button>
+            }
+
             <Dropdown>
                 <Dropdown.Toggle variant="outline-secondary" className="topnav-dropdown">
                     游戏玩法
@@ -108,12 +134,15 @@ export default function TopNav(){
                     <Dropdown.Item href="#action/3.1">房产类型</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
+
+
             {
                 allowControlPanel &&
                 <Button variant={'outline-secondary'} className={'topnav-button'} onClick={toggleControlPanel}>
                     控制面板
                 </Button>
             }
+
             <Button variant={'outline-secondary'} className={'topnav-button'} onClick={quitGame}>退出</Button>
 
             {/*房间号 Modal*/}

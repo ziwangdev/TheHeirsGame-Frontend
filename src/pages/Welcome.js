@@ -8,6 +8,9 @@ import {createRoomApi, joinRoomApi, loadGameApi} from '../api/BackendApiCalls'
 import { GameContext } from "../contexts/GameContext";
 import background from '../images/welcome-bg.png'
 import '../styles/Welcome.css'
+import hyori from "../images/hyori.jpg";
+import yunho from "../images/yunho.jpg";
+import hyojin from "../images/hyojin.jpg";
 
 export default function Welcome() {
     const history = useHistory();
@@ -75,10 +78,19 @@ export default function Welcome() {
         setMessage(message);
         setShow(true);
         // Set and store user data
+        let playerKey = 'player1';
+        if(character === '金孝利'){
+            playerKey = 'player2';
+        } else if(character === '金允浩'){
+            playerKey = 'player3';
+        } else if(character === '金孝珍'){
+            playerKey = 'player4';
+        }
         let userObj = {
             identity: identity,
             name: name,
             character: character,
+            playerKey: playerKey,
             roomID: room
         }
         setUserValue(userObj);
@@ -128,6 +140,7 @@ export default function Welcome() {
         setMessage(message);
         setShow(true);
         // Set and store user data
+
         let userObj = {
             identity: identity,
             name: name,
